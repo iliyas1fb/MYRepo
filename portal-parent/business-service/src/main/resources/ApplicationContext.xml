@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<context:annotation-config />
+	<context:component-scan base-package="org.business.service.*" />
+
+	<bean name="userService" class="org.business.service.Impl.UserServiceImpl">
+		<!-- <property name="userDAO" ref="userInfoDAO" /> -->
+	</bean>
+	
+	
+	<bean name="merchantService" class="org.business.service.Impl.MerchantServiceImpl"/>
+	
+	
+<!-- 	<bean name="userRoleService" class="org.business.service.Impl.UserRoleServiceImpl">
+		<property name="userRoleDAO" ref="userRoleDAO" />
+	</bean>-->
+	
+	<bean name="commonService" class="org.business.service.Impl.CommonServiceImpl">
+		<!-- <property name="commonsDAO" ref="commonsDAO" /> -->
+	</bean> 
+	
+	<bean name="emailService" class="org.business.service.EmailService">
+	</bean>
+	
+	<bean name="forgotPasswordValidator" class="org.business.service.validator.ForgotPasswordValidator">
+	</bean>
+	
+	<bean name="messageUtil" class="org.business.service.email.MessageUtil">
+	</bean>
+	
+
+	 
+		
+	<!-- 
+	
+
+	
+	
+	
+	<bean name="saleChannelBank" class="com.omnypay.webui.system.admin.salebank.bsl.SaleChannelBankService">
+		<property name="saleChannelBankDAO" ref="saleChannelBankDAO" />
+	</bean>
+	
+
+	<bean name="transactionSearchService" class="com.omnypay.webui.system.admin.transaction.bsl.TransactionSearchServiceNew">
+		<property name="transactionSearchDAO" ref="transactionSearchDAO" />
+	</bean>
+	
+	<bean name="merchantConfigurationService" class="com.omnypay.webui.system.admin.configuration.bsl.MerchantConfigurationService">
+		<property name="merchantConfigurationDAO" ref="merchantConfigurationDAO" />
+	</bean>
+	
+	<bean name="tokenManagementService" class="com.omnypay.webui.system.token.bsl.TokenManagementService">
+		<property name="tokenManageDAO" ref="tokenManageDAO" />
+	</bean>
+	
+	<bean name="merchantStoreService" class="com.omnypay.webui.system.admin.managestore.bsl.MerchantStoreService">
+		<property name="manageStoreDAO" ref="manageStoreDAO" />
+	</bean>
+	
+
+	<bean name="merchantCouponService" class="com.omnypay.webui.system.admin.managecoupon.bsl.MerchantCouponService">
+		<property name="userCouponDAO" ref="userCouponDAO" />
+	</bean>
+	
+	<bean name="merchantUserService" class="com.omnypay.webui.system.admin.managemerchantusers.bsl.MerchantUserService">
+		<property name="merchantUserDAO" ref="merchantUserDAO" />
+	</bean>
+
+	<bean name="rewardService" class="com.omnypay.webui.system.admin.managereward.bsl.RewardServiceImpl">
+		<property name="manageRewardPointDAO" ref="manageRewardPointDAO" />
+	</bean>
+	
+	<bean name="merchantCouponUserAssociationService" class="com.omnypay.webui.system.admin.managecoupon.bsl.MerchantCouponUserAssociationService">
+		<property name="userCouponAssocationDAO" ref="userCouponAssocationDAO" />
+	</bean>
+	
+	<bean name="merchantCouponUserFilterService" class="com.omnypay.webui.system.admin.managecoupon.bsl.MerchantCouponUserFilterService">
+		<property name="userCouponFilterDAO" ref="userCouponFilterDAO" />
+	</bean>
+	
+	<bean name="couponExceptionService" class="com.omnypay.webui.system.admin.managecoupon.bsl.CouponExceptionService ">
+		<property name="couponExceptionDAO" ref="couponExceptionDAO" />
+	</bean>
+	
+	
+	<bean name="couponDiscountService" class="com.omnypay.webui.system.admin.managecoupon.bsl.CouponDiscountService ">
+		<property name="couponDiscountDAO" ref="couponDiscountDAO" />
+	</bean> -->
+	
+</beans>
+

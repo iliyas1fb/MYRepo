@@ -1,0 +1,582 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<c:set var="contextPath" value="<%=request.getContextPath()%>" />
+<c:set var="secUserVO" value="<%=request.getSession().getAttribute(\"secUserVO\")%>" />
+<%java.text.DateFormat df = new java.text.SimpleDateFormat("MM-dd-yyyy"); %>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title><spring:message code="title.ManageMerchants"/></title>
+
+<jsp:include page="../common/scripts.jsp"/>
+<jsp:include page="../common/stylesheets.jsp"/>
+    
+<script type="text/javascript" src="${contextPath}/system-file/js/CommonDropDowns.js"></script>
+<script type="text/javascript" src="${contextPath}/system-file/js/jquery.ui.datepicker.js"></script>
+<link href="${contextPath}/system-file/css/jquery.ui.datepicker.css" rel="stylesheet" type="text/css" />
+	
+<style type="text/css">
+    #collapsable_window
+    {
+        display: none;
+    }
+</style>
+<script type="text/javascript">
+	urlValue='${contextPath}/doc/manageMerchant/getList';
+</script>
+<script type="text/javascript">
+	var searchFlag = false;
+	var context = '${contextPath}/doc/manageMerchant';
+	$(function() {
+		$("#validFrom").datepicker({
+			dateFormat: "mm-dd-yy"
+		});
+	});
+	$(function() {
+		$("#validTo").datepicker({
+			dateFormat: "mm-dd-yy",
+			minDate :0
+		});
+	});
+</script>
+
+<script>
+	jq(function() {
+		$('#errorDate').html('');
+		jq('input#reset').click(function() {
+			$('#errorDate').html('');
+			searchFlag = false;
+			var url = "${contextPath}/doc/manageMerchant/manageMerchantPage";
+			window.location.href = url;
+		});
+		jq('input#search').click(function() {
+			searchFlag = true;
+			$('#errorDate').html('');
+			var name = $("#name").val();
+			var countrylist = $("#countrylist").val();
+			var corporateCode = $("#corporateCode").val();
+			var corporateId = $("#corporateId").val();
+			if(corporateCode.length<=0){
+				$("#corporateId").attr('');
+				corporateId='';
+			}
+			
+			if(name=='' && countrylist=='' && status=='' && corporateCode==''){
+				$('#errorDate').html('<p class=error><spring:message code="script.error.EnterFields"/></p>');
+			}
+			else if(!corporateCode.match(/^([a-zA-Z0-9]+)$/) &&  corporateCode !=''){ 
+				$('#errorDate').html('<p class=error><spring:message code="script.error.InvalidMid"/></p>');
+			}
+			else if(!name.match(/^[0-9a-zA-Z\s]+$/) &&  name !=''){ 
+				$('#errorDate').html('<p class=error><spring:message code="script.error.InvalidBusinessName"/></p>');
+			}
+			else if(name !='' ||  countrylist !='' || status !='' || corporateCode !=''){ 
+				jq("#grid").jqGrid('setGridParam',
+				{
+					url : '${contextPath}/dcs/manageMerchant/getList?name='+name+ '&countrylist='+countrylist+ '&status='+status+ '&corporateCode='+corporateCode+ '&corporateId='+corporateId
+				});
+				jq("#grid").trigger('reloadGrid');
+				jq("#grid").jqGrid('setGridParam', {datatype:'json'});
+				jq("#grid").trigger('reloadGrid', [{page:1}]); 
+			}	
+		});
+	});
+</script>
+	
+<script>
+$(document).ready(function () {
+	var flag = false;
+	if('Merchant' != '${secUserVO.groups[0]}')
+	{
+		document.getElementById('searchBox').style.display = 'block';
+		$("#collapse").click(function () {
+		    $("#collapsable_window").slideToggle("slow");
+		    var element = document.getElementById('img');
+		    if(!flag){
+		    	element.src = "${contextPath}/system-file/images/minus.png";
+		    	flag = true;
+		    }
+	    	else{
+	    		element.src = "${contextPath}/system-file/images/add.png";
+		    	flag = false;
+	    	}
+		});
+	}
+	$("#MerchantAddJQ").show();
+	$("#MerchantEditJQ").show();
+	
+	$("#MerchantViewJQ").show();
+	/* $("#ApproveRejectJQ").hide();
+	$("#ValidityJQ").hide();
+	$("#ManageStoreJQ").hide(); */
+});
+	function modifyGridDefaultStyles()
+	{
+		$("#grid" + 'tr').removeClass("ui-widget-content");
+		$("#grid" + ' tr:nth-child(odd)').addClass("evenTableRow");
+		$("#grid" + 'tr:nth-child(even)').addClass("oddTableRow");
+	}
+
+	jq(function(){
+		var user='${secUserVO.originalLoginName}';
+		$('#errorDate').html('');
+		jq("#grid").jqGrid({
+			url : urlValue,
+			datatype : 'json',
+			mtype : 'GET',
+			colNames:[
+				<spring:message code="script.label.MID"/>,
+				<spring:message code="script.label.BusinessName"/>,
+				<spring:message code="script.label.ContactPerson"/>,
+				//<spring:message code="script.label.ContactNo"/>,
+				//<spring:message code="script.label.Country"/>,
+				//<spring:message code="script.label.Status"/>,
+				<spring:message code="script.label.ID"/>
+				//<spring:message code="script.label.ID"/>
+			],
+			colModel : [
+				{name : 'mid',index : 'mid',width :30,editable : true,search : true,stype:'text',editrules : {required : true},editoptions : {size : 10}},
+				{name : 'businessName',index : 'businessName',width : 30,editable : true,search : true,stype:'text',editrules : {required : true},editoptions : {size : 10}},
+				{name : 'contactPerson',index : 'contactPerson',width :30,editable : true,search : true,stype:'text',editrules : {required : true},editoptions : {size : 10}},
+				//{name : 'cntctPhoneNo',index : 'cntctPhoneNo',width :25,editable : true,search : true,editrules : {required : true},editoptions : {size : 10}},
+				//{name : 'countryName',index : 'countryName',width : 25,editable : true,search : true,editrules : {required : true},editoptions : {size : 10}},
+				{name : 'merchantId',index:'merchantId', editable:true,editrules:{edithidden: false}, editoptions:{size:1},sortable:true, hidden:true}
+				//{name : 'id',index:'id', editable:true,editrules:{edithidden: false}, editoptions:{size:1},sortable:true, hidden:true}
+			],
+			postData : {},
+			height:470,  // 355 
+			autowidth : true,
+			ignoreCase:true,
+			hidegrid : false,
+			rownumbers : false,
+			rowNum : 20,
+			pgbuttons : true, // enable page control like next, back button
+			pgtext : null,
+			pager : '#pager',
+			sortname : 'id',
+			viewrecords : true,
+			sortorder : "desc",
+			caption : <spring:message code="script.label.Merchants"/>,
+			emptyrecords : <spring:message code="script.label.EmptyRecords"/>,
+			loadonce : true,
+			toolbar: [true,"bottom"],
+			loadtext : <spring:message code="script.label.Loading"/>,
+			recordtext : <spring:message code="script.label.PaginationView"/>,
+			loadComplete : function() {
+				modifyGridDefaultStyles();
+			},
+			gridComplete: function(){
+				enableDisableButton('Manage Merchants'); 
+				var ids = jq("#grid").jqGrid('getDataIDs');
+				if(ids.length == 0){
+					$("#next_pager").addClass('ui-state-disabled');
+					$("#last_pager").addClass('ui-state-disabled');
+				}
+				if(ids.length == 0 && searchFlag){
+					$('#errorDate').html('<p class=error><spring:message code="label.NoRecordFound"/></p>');
+				}
+				else{
+					$('#errorDate').html('');
+				}
+			},
+				
+			ondblClickRow: function(rowid) {
+				var flag = enableDisableButton('Manage Merchants',"MERCHANT");
+				if(flag)
+					editMerchant();
+			},
+			jsonReader : {
+				root : "rows",
+				page : "page",
+				total : "total",
+				records : "records",
+				repeatitems : false,
+				cell : "cell",
+				id : "mid"
+			}
+		});
+		
+
+		jq("#t_grid").append(
+				"<div class=\"mycart\" style=\"width:80%!important;\"><ul style='width:120%;'>"+
+				"<li><a class=\"icon\" id=\"MerchantAddJQ\" onclick=\"addMerchant();\" title='<spring:message code = 'label.AddMerchant' />'><spring:message code = 'label.Add' /></a></li>"+
+				"<li><a class=\"edit\" id=\"MerchantEditJQ\" onclick=\"editMerchant();\" title='<spring:message code = 'label.EditMerchant' />'><spring:message code = 'label.Edit' /></a></li>"+
+				"<li><a class=\"icon\" id=\"MerchantViewJQ\" onclick=\"viewMerchant()\" title='<spring:message code = 'label.ViewMerchant' />'><spring:message code = 'label.View' /></a></li>"+
+				"</ul></div>"	
+			);
+		jq("#grid").jqGrid('navGrid', '#pager', {
+			edit : false,
+			add : false,
+			del : false,
+			search: false, refresh:false
+		}, {}, {}, {}, {
+			sopt : [ 'eq', 'ne', 'lt', 'gt', 'cn', 'bw', 'ew' ],
+			closeOnEscape : true,
+			multipleSearch : true,
+			closeAfterSearch : true
+		});
+		
+		jq("#btnFilter").click(function(){
+			jq("#grid").jqGrid('searchGrid', {
+				multipleSearch : false,
+				sopt : [ 'eq' ]
+			});
+		});
+	});
+		
+	function addMerchant(){
+		var url = "${contextPath}/doc/manageMerchant/addMerchant";
+		window.location.href = url; 
+	}
+	
+	function editMerchant(){
+		var row = jq("#grid").jqGrid('getGridParam', 'selrow');
+		var mid = jq('#grid').jqGrid('getCell', row, 'mid');
+		if(mid == null || mid == false){
+			popupNew('dialogSelectRow','20');
+		}else{
+			var mid = jq("#grid").jqGrid('getGridParam','selrow');
+			var url = '${contextPath}/dcs/manageMerchant/getEditMerchant';
+			post_to_url(url, {'mid':mid});
+		}
+	}
+	function approveRejectMerchant()
+	{
+		var row = jq("#grid").jqGrid('getGridParam', 'selrow');
+		var mid = jq('#grid').jqGrid('getCell', row, 'mid');
+		if(mid==null){
+			popupNew('dialogSelectRow','20');
+		}
+		else{
+			var mid = jq("#grid").jqGrid('getGridParam','selrow');
+			var status = jq('#grid').jqGrid('getCell', mid, 'status');
+			if(status !='PENDING_APPROVAL'){
+				popupNew('dialogPendingForApproval','30');
+			}
+			else{
+				var url = "${contextPath}/dcs/manageMerchant/getApproveRejectMerchant";
+				post_to_url(url, {'mid':mid});
+			}
+		}
+	}
+	
+	function viewMerchant(){
+		var row = jq("#grid").jqGrid('getGridParam', 'selrow');
+		var mid = jq('#grid').jqGrid('getCell', row, 'mid');
+		var status = jq('#grid').jqGrid('getCell', mid, 'status');
+		if(row==null){
+			popupNew('dialogSelectRow','20');
+		}
+		else{
+			var url = "${contextPath}/dcs/manageMerchant/getViewMerchant";
+			post_to_url(url, {'mid':mid,'status':status});
+		}
+	}
+	
+	function licenseValidity(){
+		var row = jq("#grid").jqGrid('getGridParam', 'selrow');
+		var mid = jq('#grid').jqGrid('getCell', row, 'mid');
+		var status = jq('#grid').jqGrid('getCell', mid, 'status');
+		if(row==null){
+			popupNew('dialogSelectRow','20');
+		}
+		else if(status != 'EXPIRED'){
+			popupNew('dialogValidity','25');
+		}
+		else{
+			popupNew('dialogChangeValidity','25');
+			jQuery.ajax({
+    		    url: '${contextPath}/dcs/manageMerchant/getEditLicenseValidity?mid='+mid,
+    		    type: 'GET',
+      		    datatype: 'json',
+      		    success: function (data){
+      		    	var validFrom=data.response.licenseValidFrom;
+      		    	var validTo=data.response.licenseValidTo;
+      		    	$("input#validFrom").val(validFrom);
+      		    	$("input#validTo").val(validTo);
+      		    	$('#autoRenew').prop('checked', false);
+      		    	$('#validityError').html('');
+    		    }
+			});
+		}
+	}
+	
+	function ManageStore(){
+		var mid = jq("#grid").jqGrid('getGridParam','selrow');
+		var midVal = jq('#grid').jqGrid('getCell', mid, 'mid');
+		if(mid==null){
+			popupNew('dialogSelectRow','20');
+		}
+		else
+		{		  					           
+			var status = jq('#grid').jqGrid('getCell', mid, 'status');
+			if(status=='ACTIVE' ){
+				var url = "${contextPath}/dcs/storeConfuguration/manageStores";
+				post_to_url(url, {'blockScope':'MERCHANT','mid':midVal});
+			}else{
+				popupNew('dialogCommission','35');
+			}
+		}
+	} 
+	
+	function ProductOffer(){
+	
+ 		var mid = jq("#grid").jqGrid('getGridParam','selrow');
+		var midVal = jq('#grid').jqGrid('getCell', mid, 'mid');
+		if(mid==null){
+			popupNew('dialogSelectRow','20');
+		}
+		else
+		{		  	
+			var status = jq('#grid').jqGrid('getCell', mid, 'status');
+			if(status=='ACTIVE' ){
+				var url = "${contextPath}/dcs/offerConfiguration/manageOffer";
+				post_to_url(url, {'blockScope':'MERCHANT','mid':midVal});
+			}else{
+				popupNew('dialogCommission','35');
+			}
+		} 
+	} 
+	
+	
+	function ManageReward(){
+		var mid = jq("#grid").jqGrid('getGridParam','selrow');
+		var midVal = jq('#grid').jqGrid('getCell', mid, 'mid');
+		if(mid==null){
+			popupNew('dialogSelectRow','20');
+		}
+		else
+		{		  					           
+			var status = jq('#grid').jqGrid('getCell', mid, 'status');
+			if(status=='ACTIVE' ){
+				var url = "${contextPath}/dcs/rewardConfuguration/manageRewards";
+				post_to_url(url, {'blockScope':'MERCHANT','mid':midVal});
+			}else{
+				popupNew('dialogCommission','35');
+			}
+		}
+	} 
+	
+	
+	
+	
+	function couponConfiguration(){
+		var mid = jq("#grid").jqGrid('getGridParam','selrow');
+		var midVal = jq('#grid').jqGrid('getCell', mid, 'mid');
+		if(mid==null){
+			popupNew('dialogSelectRow','20');
+		}
+		else
+		{		  	
+			
+			var status = jq('#grid').jqGrid('getCell', mid, 'status');
+		
+				var url = "${contextPath}/dcs/couponConfiguration/manageCoupon";
+				post_to_url(url, {'blockScope':'MERCHANT','mid':midVal});
+		} 
+	} 
+	
+	
+	
+	
+	function loyaltyConfiguration(){
+				var mid = jq("#grid").jqGrid('getGridParam','selrow');
+			var midVal = jq('#grid').jqGrid('getCell', mid, 'mid');
+			if(mid==null){
+				popupNew('dialogSelectRow','20');
+			}
+			else
+			{		  					           
+				var status = jq('#grid').jqGrid('getCell', mid, 'status');
+				if(status=='ACTIVE' ){
+					var url = "${contextPath}/dcs/couponConfiguration/manageLoyalty";
+					post_to_url(url, {'blockScope':'MERCHANT','mid':midVal});
+				}else{
+					popupNew('dialogCommission','35');
+				}
+			}
+		} 
+	
+	
+	
+	
+	
+	function manageException(){
+	//alert('inside');
+ 		var mid = jq("#grid").jqGrid('getGridParam','selrow');
+		var midVal = jq('#grid').jqGrid('getCell', mid, 'mid');
+		if(mid==null){
+			popupNew('dialogSelectRow','20');
+		}
+		else
+		{		  	
+			
+			var status = jq('#grid').jqGrid('getCell', mid, 'status');
+		
+				var url = "${contextPath}/dcs/couponConfiguration/manageException";
+				post_to_url(url, {'blockScope':'MERCHANT','mid':midVal});
+		} 
+	} 
+	
+	function manageDiscount(){
+		
+		//alert("in discount");
+		console.log("in");
+		
+ 		 var mid = jq("#grid").jqGrid('getGridParam','selrow');
+		var midVal = jq('#grid').jqGrid('getCell', mid, 'mid');
+		if(mid==null){
+			popupNew('dialogSelectRow','20');
+		}
+		else
+		{		  	
+			
+			var status = jq('#grid').jqGrid('getCell', mid, 'status');
+		
+				var url = "${contextPath}/dcs/couponConfiguration/manageDiscount";
+				post_to_url(url, {'blockScope':'MERCHANT','mid':midVal});
+		} 
+	}  
+	
+	function merchantConfiguration(){
+		var mid = jq("#grid").jqGrid('getGridParam','selrow');
+		var midVal = jq('#grid').jqGrid('getCell', mid, 'mid');
+		var url = "${contextPath}/dcs/configuration/merchantConfiguration";
+		post_to_url(url, {'mid':midVal});
+	}
+	$(window).bind('resize', function() {
+		var pageWidth = jq("#gridIDValue").width();	
+		jq("#grid").jqGrid('setGridWidth',pageWidth);
+	 }).trigger('resize');
+	
+</script>
+
+<jsp:include page="../common/header.jsp" />
+
+<div class="container_12"> 
+	<div class="grid_12">
+		<p class="breadcrumb">
+			<a href="#" class="breadcrumblink_no"><spring:message code="menu_link.Configuration"/></a>
+			<a href="#" class="breadcrumblink_no"><spring:message code="menu_link.MerchantConfiguration"/></a>
+			<spring:message code="menu_link.ManageMerchants"/>
+		</p>
+	</div>
+</div>
+<div class="container_12"> 
+	<div class="grid_12" id="searchBox" display: none;"> <!-- *added* -->
+		<div class="box  altbox">
+			<div class="boxin">
+				<div class="header" id="collapse" style="overflow: hidden;">
+					<h3><spring:message code="label.ManageMerchantSearch"/></h3>
+					<span style="float: right; padding-right: 20px; padding-top: 2px;">
+						<img id="img" src="${contextPath}/system-file/images/add.png" />
+					</span>
+				</div>
+				<div id="collapsable_window" style="overflow: hidden;">
+					<div id="errorDate" class="displayErrMsg"></div>
+					<table  id="gridNew" style="margin-top: 1%;">
+						<tbody>
+							<tr>
+								<td><spring:message code="label.MID"/> :</td>
+								<td>
+									<input type="text" class="txt_width1" name="corporateCode" id="corporateCode"/>
+								</td>
+								<td><spring:message code="label.BusinessName"/> :</td>
+								<td>
+									<input type="text" class="txt_width1" name="name" value="" id="name" />
+								</td>
+								<%-- <td><spring:message code="label.Country"/>:</td>
+								<td>
+									<select class="txt_width_select1" name="countrylist"  id="countrylist">
+										<option value=''>------<spring:message code="label.Select" />------</option>
+									</select>
+								</td> --%>
+							</tr>
+						</tbody>
+					</table>
+					<div class="sep" style="margin: 0 0 1% 1%;">
+						<input class="button altbutton" type="submit" name="button2" id="search" value='<spring:message code="button.Search"/>' title='<spring:message code="button.Search"/>'/>
+						<input class="button " type="submit" name="button3" id="reset" value='<spring:message code="button.Reload"/>' title='<spring:message code="button.Reload"/>'/>
+					</div> 
+				</div>
+			</div>
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	<div class="grid_12" id="gridIDValue" >
+		<div class="content" id="box1-tabular" style="width:100%!important;"><!-- content box 1 for tab switching -->
+			<fieldset style="width:100%!important;">
+				<table id="grid" style="width:auto;"></table>
+			</fieldset>
+			<div class="pagination"> 
+				<div id="pager" class="scroll"></div>					
+				<div class="clear"></div>
+			</div>
+		</div>		
+	</div>
+</div>
+<jsp:include page="../common/footer.jsp"/>
+
+<%--  <jsp:include page="addMerchant.jsp" /> --%>
+<%-- <jsp:include page="editMerchant.jsp" /> 
+<jsp:include page="viewMerchant.jsp" />  --%>
+<!-- 
+<script>
+countryList(context+'/countryList','countrylist');
+</script> -->
+
+<div id="dialogSelectRow" class="popup_block" title='<spring:message code="label.Warning" />' style="display: none">
+	<div class='header'>
+		<span><spring:message code = "label.ManageMerchants" /></span>
+		<a href="#" id="closepopup3" style="float: right;" class="close"><img src="${contextPath}/system-file/images/cancel.png" /></a>
+	</div>
+	<h3 style="padding: 0 0 2% 2%;"><spring:message code="script.error.PleaseSelectRow" /></h3>
+</div>
+<div id="dialogEditMerchant" class="popup_block" title='<spring:message code="label.Warning" />' style="display: none">
+	<div class='header'>
+		<span><spring:message code = "label.ManageMerchants" /></span>
+		<a href="#" id="closepopup15" style="float: right;" class="close"><img src="${contextPath}/system-file/images/cancel.png" /></a>
+	</div>
+	<h3 style="padding: 0 0 2% 2%;"><spring:message code="error.message.LockedOrExpired" /></h3>
+</div>
+<div id="dialogPendingForApproval" class="popup_block" title='<spring:message code="label.Warning" />' style="display: none">
+	<div class='header'>
+		<span><spring:message code = "label.ApproveRejectMerchant" /></span>
+		<a href="#" id="closepopup4" style="float: right;" class="close"><img src="${contextPath}/system-file/images/cancel.png" /></a>
+	</div>
+	<h3 style="padding: 0 0 2% 2%;"><spring:message code="error.message.PleaseselectPENDINGAPPROVAL" /></h3>
+</div>
+<div id="dialogValidity" class="popup_block" title='<spring:message code="label.Warning" />' style="display: none">
+	<div class='header'>
+		<span><spring:message code = "label.ManageMerchants" /></span>
+		<a href="#" id="closepopup13" style="float: right;" class="close"><img src="${contextPath}/system-file/images/cancel.png" /></a>
+	</div>
+	<h3 style="padding: 0 0 2% 2%;"><spring:message code="error.message.PleaseselectvalidMerchantEXPIRED" /></h3>
+</div>
+<div id="dialogChangeValidity" class="popup_block" title='<spring:message code="label.Warning" />' style="display: none">
+	<div class='header'>
+		<span><spring:message code = "label.ChangeLicenseValidity" /></span>
+		<a href="#" id="closepopup14" style="float: right;" class="close"><img src="${contextPath}/system-file/images/cancel.png" /></a>
+	</div>
+	<div id="validityError" class="displayErrMsg"></div>
+	<table style="padding: 2% 0 2% 2%;">
+		<tr>
+			<td><spring:message code="label.ValidFrom"/>:<span style="color: #ff0000">*</span></td>
+			<td><input type="text" id="validFrom" class="txt_width" tabindex="1"/></td>
+		</tr>
+		<tr>
+			<td><spring:message code="label.ValidTo"/>:<span style="color: #ff0000">*</span></td>
+			<td><input type="text" id="validTo" class="txt_width" tabindex="2"/></td>
+		</tr>
+		<tr>
+			<td><spring:message code="label.AutoRenew"/></td>
+			<td><input type="checkbox" id="autoRenew" tabindex="3"/></td>
+		</tr>
+	</table>
+	<div class="sep" style="padding: 0 0 2% 2%;">
+		<input class="button" type="button" name="button" id="save" value='<spring:message code="button.Save"/>' title='<spring:message code="button.Save"/>' onclick="saveLicenseValidity()" tabindex="4"/>
+		<input class="button altbutton" type="button" name="button2" id="cancel" value='<spring:message code="button.Cancel"/>' title='<spring:message code="button.Cancel"/>' onclick="closeAlertDialogue()" onblur="tabFocus('validFrom')" tabindex="5"/>
+	</div>
+</div>
+<div id="statusMsg" title='<spring:message code="script.label.Warning"/>' style="display: none"></div>
+

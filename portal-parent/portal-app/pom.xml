@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>portal</groupId>
+    <artifactId>portal-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <groupId>portal-app</groupId>
+  <artifactId>portal-app</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>portal-app</name>
+  <url>http://maven.apache.org</url>
+   <properties>
+  <jdk.version>1.8</jdk.version>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <spring.version>3.2.8.RELEASE</spring.version>
+	<spring.security.version>3.2.3.RELEASE</spring.security.version>
+	<jstl.version>1.2</jstl.version>
+	<javax.servlet.version>3.0.1</javax.servlet.version>
+  </properties>
+  <dependencies>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+
+
+
+	<!-- common start  -->
+
+<dependency>
+    <groupId>commons-lang</groupId>
+    <artifactId>commons-lang</artifactId>
+    <version>2.6</version>
+</dependency>
+
+<!-- common end -->
+
+	<!-- Spring start -->
+	
+	
+	<!-- Spring 3 dependencies -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-aop</artifactId>
+		<!-- <version>${spring.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-beans</artifactId>
+		<!-- <version>${spring.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context</artifactId>
+		<!-- <version>${spring.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-context-support</artifactId>
+		<!-- <version>${spring.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-core</artifactId>
+		<!-- <version>${spring.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-expression</artifactId>
+		<!-- <version>${spring.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+
+<!-- 	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>${spring.version}</version>
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+ -->
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-orm</artifactId>
+		<!-- <version>${spring.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+<!-- 	
+		<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-tx</artifactId>
+		<version>${spring.version}</version>
+		<version>3.0.5.RELEASE</version>
+	</dependency> -->
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-web</artifactId>
+	<!-- 	<version>${spring.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-webmvc</artifactId>
+		<!-- <version>${spring.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+	
+	
+	
+
+<!-- 	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-asm</artifactId>
+		<version>${spring.version}</version>
+		<version>3.0.5.RELEASE</version>
+	</dependency> -->
+	
+	
+	
+	<!-- Spring 3 dependencies -->
+	
+	<!-- Spring Security -->
+
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<!-- <version>${spring.security.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-core</artifactId>
+		<!-- <version>${spring.security.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-taglibs</artifactId>
+		<!-- <version>${spring.security.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<!-- <version>${spring.security.version}</version> -->
+		<version>3.0.5.RELEASE</version>
+	</dependency>
+
+
+	<!-- Spring Security -->
+	
+
+
+	<!-- Spring end -->
+
+
+
+
+	<!-- file upload start -->
+
+	<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+	<!--file upload end -->
+
+
+	<!-- servlet start -->
+	
+	<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.1.0</version>
+    <scope>provided</scope>
+ </dependency>
+
+	
+
+
+
+	<dependency>
+		<groupId>jstl</groupId>
+		<artifactId>jstl</artifactId>
+		<!-- <version>${jstl.version}</version> -->
+		<version>1.2</version>
+	</dependency>
+
+	<dependency>
+		<groupId>javax.servlet.jsp</groupId>
+		<artifactId>javax.servlet.jsp-api</artifactId>
+		<version>2.3.1</version>
+		<scope>provided</scope>
+		
+	</dependency>
+
+	<!-- servlet end -->
+	
+	<!-- jackson-mapper-asl start -->
+	<dependency>
+	<groupId>org.codehaus.jackson</groupId>
+	<artifactId>jackson-jaxrs</artifactId>
+	<version>1.6.3</version>
+</dependency>
+
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-mapper-asl</artifactId>
+		<version>1.6.3</version>
+	</dependency>
+
+
+	<dependency>
+		<groupId>com.fasterxml.jackson.core</groupId>
+		<artifactId>jackson-databind</artifactId>
+		<version>2.5.3</version>
+	</dependency>
+	
+	<!-- jackson-mapper-asl end -->
+	
+	
+	
+	
+	
+	
+	
+	<!-- postgres start -->
+	
+		<dependency>
+	<groupId>postgresql</groupId>
+	<artifactId>postgresql</artifactId>
+	<version>9.0-801.jdbc4</version>
+</dependency>
+
+
+	<dependency>
+		<groupId>c3p0</groupId>
+		<artifactId>c3p0</artifactId>
+		<version>0.9.0.4</version>
+	</dependency>
+
+	
+	
+	<!-- postgres  end -->
+	
+	
+	<!-- local dependency    -->
+	
+	<dependency>
+		<groupId>portal</groupId>
+ 		 <artifactId>common-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		<!-- <scope>complie</scope> -->
+	</dependency>
+	
+	
+		<dependency>
+		  <groupId>portal</groupId>
+  		 <artifactId>business-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+		
+	</dependency>
+	
+	
+	
+	<dependency>
+		  <groupId>portal</groupId>
+  		<artifactId>exception-service</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	
+	</dependency>
+	
+	
+	<!-- local dependency   end -->
+	
+
+    
+  </dependencies>
+  <packaging>war</packaging>
+  
+<build>
+ <plugins> 
+ 
+ <!-- <plugin>
+                <groupId>org.codehaus.cargo</groupId>
+                <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.4.8</version>
+                <configuration>
+                    <container>
+                        <containerId>tomcat8x</containerId>
+                        <home>${env.CATALINA_HOME}</home>
+                    </container>
+                    <configuration>
+                        <type>existing</type>
+                        <home>${env.CATALINA_HOME}</home>
+                    </configuration>
+                    <deployables>
+                        <deployable>
+                            <groupId>portal-app</groupId>
+                            <artifactId>ROOT</artifactId>
+                            <type>war</type>
+                            <properties>
+                                <context>${project.build.finalName}</context>
+                            </properties>
+                        </deployable>
+                    </deployables>
+                    <deployer>
+                        <type>installed</type>
+                    </deployer>
+                </configuration>
+            </plugin>
+  -->
+  
+
+            <plugin>
+              <groupId>org.apache.tomcat.maven</groupId>
+              <artifactId>tomcat7-maven-plugin</artifactId>
+              <version>2.2</version>
+            </plugin>   
+
+ 
+  <plugin>
+  <artifactId>maven-war-plugin</artifactId>
+  <version>2.6</version>
+  <configuration>
+    <failOnMissingWebXml>false</failOnMissingWebXml>
+  </configuration>
+</plugin>
+
+
+</plugins>
+</build>
+
+
+</project>

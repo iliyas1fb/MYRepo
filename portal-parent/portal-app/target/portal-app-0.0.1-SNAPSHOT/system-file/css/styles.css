@@ -1,0 +1,591 @@
+
+/* -------------------- Basic HTML tags -------------------- */
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, font, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	/*outline: 0;*/
+	/* font-size: 100%; */
+	vertical-align: baseline;
+	background: transparent;
+	/*outline: none;*/
+}
+body {
+	font: 12px/1.5 "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	color: #444444;
+
+	}
+	a:active, a:focus, input {
+    /*outline: 0;
+    outline-style:none;
+    outline-width:0;*/
+}
+a {
+    /*outline: none;
+	underline:none;*/
+}
+a:focus {
+	/*outline:none;
+	*/}
+
+a:hover, a:active { 
+	text-decoration: underline; 
+	}
+
+
+/* --------------------  Custom general classes -------------------- */
+
+.align-left    { text-align: left; }
+	
+.align-right   { text-align: right; }
+	
+.align-center  { text-align: center; }
+	
+.align-justify { text-align: justify; }
+	
+.float-left    { float: left; }
+	
+.float-right   { float: right; }
+
+.bottom-spacing { margin-bottom: 20px; }
+
+
+
+
+/* -------------------- Page elements -------------------- */
+
+
+
+#header { 
+	margin-bottom: 20px;
+ 
+	}
+
+#header-status {
+	height:80px;
+	/*background: #5091E1;*/
+	background-color: #ffffff;
+	padding: 0; 
+	color: #aaaaaa;
+	  border-bottom: 10px solid #5091e1;
+	}
+	
+#text-invitation {
+	display: block; 
+	float: left; 
+	padding: 9px 0 11px 0;
+	}
+
+#message-notification {
+	display: block; 
+	float: left; 
+	background: url(../images/mail-q-bg.jpg) top left no-repeat; 
+	color: #6dc6e7; 
+	padding: 9px 0 11px 0; 
+	text-decoration: none; 
+	margin-left: 10px;
+	}
+	
+#message-notification span { 
+	color: #444444; 
+	margin-right: 15px; 
+	text-align: center; 
+	display: block; 
+	float: left; 
+	width: 32px; 
+	}
+	
+#message-notification a:hover, 
+#message-notification a:active { 
+	color: #ffffff; 
+	}
+	
+a#logout, 
+a#logout:visited { 
+	display: block; 
+	float: right; 
+	background: url(../images/icon-logout.gif) center right no-repeat; 
+	color: #6dc6e7; 
+	padding: 9px 20px 11px 0px; 
+	text-decoration: none; 
+	}
+	
+a#logout:hover, 
+a#logout:active { 
+	color: #ffffff; 
+	}
+	
+#header-main { 
+	/*background: #333F53 ;*/
+	background-color: #3d6ea0;				
+	height: 54px;
+	}
+	#footer-main { 
+	margin-top:20px;
+	background:#ffffff;
+	color:#333F53;
+	border-top:5px solid #5091e1;
+	line-height:44px;
+	vertical-align:middle;
+	text-align:center;
+	height: 44px;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	}
+	
+#header-main #logo { 
+	background: url(../images/logo.gif) no-repeat left 10px; 
+	width: 100%; 
+	height: 70px; 
+	}
+	
+
+#footer {
+	padding: 0; 
+	color: #aaaaaa; 
+	padding: 12px 0 15px 0; 
+	margin-top: 30px; 
+	border-top: 1px solid #cccccc;
+	}
+
+
+div.module { 
+
+	float: left; 
+	width: 100%; 
+	margin-bottom: 20px; 
+	}
+
+div.module div.module-body { 
+	background: url(../images/module-body-right-bg.gif) no-repeat scroll bottom right; 
+	padding: 20px 3% 20px 3%; float: left; width: 94%;
+	}
+
+/* Percentage padding in the module dependant on the cell width */
+.grid_1 div.module div.module-body  { padding: 20px 8% 20px 8%; float: left; width: 84%; }
+.grid_2 div.module div.module-body  { padding: 20px 7% 20px 7%; float: left; width: 86%; }
+.grid_3 div.module div.module-body  { padding: 20px 6% 20px 6%; float: left; width: 88%; }
+.grid_4 div.module div.module-body  { padding: 20px 5% 20px 5%; float: left; width: 90%; }
+.grid_5 div.module div.module-body  { padding: 20px 4% 20px 4%; float: left; width: 92%; }
+.grid_6 div.module div.module-body  { padding: 20px 3% 20px 3%; float: left; width: 94%; }
+.grid_7 div.module div.module-body  { padding: 20px 2.75% 20px  2.75%; float: left; width: 94.5%; }
+.grid_8 div.module div.module-body  { padding: 20px 2.5% 20px 2.5%; float: left; width: 95%; }
+.grid_9 div.module div.module-body  { padding: 20px 2.25% 20px 2.25%; float: left; width: 95.5%; }
+.grid_10 div.module div.module-body { padding: 20px 2% 20px 2%; float: left; width: 96%; }
+.grid_11 div.module div.module-body { padding: 20px 1.75% 20px 1.75%; float: left; width: 96.5%; }
+.grid_12 div.module div.module-body { padding: 20px 1.5% 20px 1.5%; float: left; width: 97%; }
+
+
+	
+div.module div.module-table-body { 
+	background: url(../images/module-body-right-bg.gif) no-repeat scroll bottom right; 
+	padding: 0; 
+	float: left; 
+	width: 100%; 
+	}
+
+div.module h2 { 
+    /* Sliding right image */
+    background: url(../images/module-header-left-bg.gif) no-repeat scroll top left; 
+	display: block;
+	float: left;
+	height: 32px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
+	margin-right: 0px;
+	padding-right: 0px; /* CHENGE THIS VALUE ACCORDING TO RIGHT IMAGE WIDTH */
+	/* FONT PROPERTIES */
+	text-decoration: none;
+	color: #444444;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight:bold;
+	width: 100%;
+	margin-bottom: 0;
+	letter-spacing: normal
+	}
+
+div.module h2 span { 
+	/* Background left image */ 
+	background: url(../images/module-header-right-bg.gif) no-repeat top right; 
+	display: block;
+	line-height: 20px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
+	padding: 7px 0 5px 18px;
+
+	}
+
+div.module table {
+	width: 100%; 
+	margin: 0 0 10px 0;
+	
+	}
+
+div.module table.tr {
+	border-collapse: separate;
+	border-right: 1px solid #aaaaaa;
+	border-left: 1px solid #aaaaaa;
+	}
+
+div.module table th {
+	background-color: #eeeeee;
+	color: #444444;
+	padding: 5px;
+	text-align: left;
+	border-right: 1px solid #d9d9d9;
+	border-bottom: 1px solid #d9d9d9;
+	}
+	
+div.module table td {
+	background-color: #ffffff;
+
+	}
+
+div.module table tr.odd td { /* You can use this style if you want to do zebra-colored tables with other technique than Table Sorter script used here */
+	background-color: #f1f5fa;
+	}
+	
+.table-apply {
+	width: 40%; float: right; text-align: right; margin-right: 10px;
+	}
+
+
+
+
+/* -------------------- Pager -------------------- */
+.pager {
+	display: block; padding: 0px 10px 10px 10px;  width: 40%; float: left; 
+	}
+
+.pager .first,
+.pager .prev,
+.pager .next,
+.pager .last {
+	margin-bottom: -2px;
+	}
+.information
+{
+width:100%; 
+overflow:hidden;
+ border-bottom:solid 1px #ccc; 
+ padding-bottom:8px; 
+ border-radius:15px;
+
+}
+ .informatinfull{
+width:15%; height:auto; float:left;  margin-left:9px; border-right:solid 1px #ccc; margin-top:8px; 
+}
+ .informatall{
+width:22%; height:auto; float:left;  margin-left:15px; border-right:solid 1px #ccc; margin-top:8px; word-wrap:break-word;
+}
+
+.informatlast{
+width:22%; height:auto; float:left;  margin-left:15px;  margin-top:8px; word-wrap:break-word;
+}
+.main_in{
+width:100%; float:left; margin-bottom:5px;
+}
+.payment_txt{
+  border: 1px solid #999999;
+    border-radius: 5px 5px 5px 5px;
+    padding: 5px 2px;
+    width: 265px;
+}
+
+/* -------------------- Button (sliding door technique) -------------------- */
+
+/* button outside a module box */
+a.button {
+    /* Sliding right image */
+    background: transparent url(../images/button-right-bg-m.gif) no-repeat scroll top right; 
+	display: block;
+	float: left;
+	height: 26px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
+	padding-right: 11px; /* CHENGE THIS VALUE ACCORDING TO RIGHT IMAGE WIDTH */
+	/* FONT PROPERTIES */
+	text-decoration: none;
+	color: #444444;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	}
+	
+a.button span {
+	/* Background left image */ 
+	background: transparent url(../images/button-left-bg-m.gif) no-repeat top left; 
+	display: block;
+	line-height: 15px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
+	padding: 4px 0 7px 10px;
+	}
+
+a.button:hover { 
+	background-position: bottom right; color:#0063be; 
+	}
+
+a.button:hover span{
+	background-position: bottom left;
+	color:#0063be;
+	}
+
+/* button inside a module box */
+div.module a.button {
+    /* Sliding right image */
+    background: transparent url(../images/button-right-bg.gif) no-repeat scroll top right; 
+	display: block;
+	float: left;
+	height: 26px; /* CHANGE THIS VALUE ACCORDING TO IMAGE HEIGHT */
+	padding-right: 11px; /* CHENGE THIS VALUE ACCORDING TO RIGHT IMAGE WIDTH */
+	/* FONT PROPERTIES */
+	text-decoration: none;
+	color: #444444;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	}
+	
+div.module a.button span {
+	background: transparent url(../images/button-left-bg.gif) no-repeat top left; 
+	display: block;
+	line-height: 15px; /* CHANGE THIS VALUE ACCORDING TO BUTTONG HEIGHT */
+	padding: 4px 0 7px 10px;
+	}
+
+
+
+/* -------------------- Pagination -------------------- */
+
+/* -------------------- Forms -------------------- */
+
+
+	
+legend {
+	margin-bottom: 10px; 
+	display: block; 
+	}
+
+.input-shortnew, 	
+.input-short,
+.input-medium,
+.input-long { 
+	padding: 3px; 
+	}
+	
+select { 
+	padding: 2px; 
+	}
+	
+textarea { 
+	padding: 3px; 
+	}
+	
+
+	.input-short { 
+	width:200px; 
+	}
+	
+	.input-shortnew { 
+	width:90px; 
+	}
+	
+.input-medium { 
+	width: 50% 
+	}
+	
+.input-long { 
+	width: 75% 
+	}
+	input.input-shortnew,
+input.input-short,
+input.input-medium,
+input.input-long, 
+select, 
+textarea {
+
+	}
+
+input.input-short:focus,
+input.input-medium:focus,
+input.input-long:focus, 
+select:focus, 
+textarea:focus {
+	
+	}
+
+
+input.submit-green { 
+	background: url(../images/submit-green-bg.gif) top left repeat-x; 
+	border: 0; 
+	border-top: 1px solid #6bd091; 
+	border-left: 1px solid #6bd091; 
+	border-right: 1px solid #349c5c; 
+	border-bottom: 1px solid #349c5c; 
+	color: #ffffff; 
+	font-size: 14px; 
+	padding: 2px 12px; 
+	margin: 0px 10px 0 0;
+	cursor: pointer;
+	}
+
+input.submit-green-hover { 
+	background-image: url(../images/submit-green-bg-hover.gif);
+	}
+
+input.submit-gray { 
+	background: url(../images/submit-gray-bg.gif) top left repeat-x; 
+	border: 0; 
+	border-top: 1px solid #cccccc; 
+	border-left: 1px solid #cccccc; 
+	border-right: 1px solid #888888; 
+	border-bottom: 1px solid #888888; 
+	color: #ffffff; 
+	font-size: 14px; 
+	padding: 2px 12px; 
+	margin: 0px 10px 0 0;
+	cursor: pointer;
+	}
+
+input.submit-gray-hover { 
+	background-image: url(../images/submit-gray-bg-hover.gif); 
+	}
+
+
+
+
+/* -------------------- Text input and select input notifications -------------------- */
+
+
+
+
+
+
+/* -------------------- Category list -------------------- */
+
+a.removable, 
+a.removable:visited {
+	padding: 5px 18px 5px 0px;
+	}
+
+a.removable:hover, 
+a.removable:active {
+	background: url(../images/cross-small.gif) no-repeat center right;
+	}
+
+
+
+
+/* -------------------- To-do list -------------------- */
+
+a.checkable, 
+a.checkable:visited {
+	padding: 5px 18px 5px 0px;
+	}
+
+a.checkable:hover, 
+a.checkable:active {
+	background: url(../images/tick-small.gif) no-repeat center right;
+	}
+	
+a.completed, 
+a.completed:visited {
+	color: #aaaaaa;
+	}
+
+
+
+
+/* -------------------- Messages -------------------- */
+.separated { 
+	border-top: 1px solid #cccccc; 
+	padding-top: 15px; 
+	}
+
+.reply { 
+	padding-left: 20px; 
+	background: url(../images/arrow-curve-180-left.gif) left 50% no-repeat; 
+	margin-right: 7px;
+	}
+	
+.forward { 
+	padding-left: 20px; 
+	background: url(../images/arrow-curve-000-left.gif/) left 50% no-repeat; 
+	margin-right: 7px; 
+	}
+	
+a.delete, 
+a.delete:visited { 
+	padding-left: 16px;
+	background: url(../images/cross-small.gif) left 50% no-repeat; 
+	color: #C00;  
+	}
+
+h3.mail { 
+	display: block; 
+	padding: 20px 0px 20px 70px; 
+	background: url(../images/Crystal_Project_mail_open.gif) left 50% no-repeat;
+	}
+	
+#p-messages {
+	padding: 20px;
+}
+
+
+
+
+
+/* -------------------- Login page -------------------- */
+
+form.login {
+	background: url(../images/Crystal_Clear_locked.gif) 87% 10px no-repeat;
+}
+
+
+.breadcrumb{
+font: bold 12px "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, sans-serif;
+color:#0d65a9;
+padding: 3px 10px 4px 10px;
+}
+
+.breadcrumb a{
+background: transparent url(../images//breadcrumb.gif) no-repeat center right;
+text-decoration: none;
+padding-right: 18px; /*adjust bullet image padding
+color: #0d65a9;*/
+}
+/*
+.breadcrumb a:visited, .breadcrumb a:active{
+color: #0d65a9;
+}*/
+/*
+.breadcrumb a:hover{
+text-decoration: underline;
+}
+*/
+title{background-color:red;}
+.merchant .sep{margin-bottom:60px;}
+
+:root{
+	--color-1:#5091E1;
+	--color-2:#5f6c7f;
+	--color-3:#3D6EA0;
+	--color-4:#C1C3C4;
+	--color-5:#6CC8AA;
+	--color-6:#333F53;
+	--color-7:#6BB3F9;
+	--color-8:#000000;
+	--color-9:#F2F2F2;
+	--color-10:#6294CB;
+	--color-11:#565656;
+	--color-12:#666666;
+	--color-13:#999999;
+	--color-14:#79D784;
+	--color-15:#4E76A2;
+	--color-16:#fff;
+	}
+
+
+

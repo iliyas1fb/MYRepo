@@ -1,0 +1,108 @@
+/* 
+    Document   : pop_up
+    Created on : Jan 4, 2012, 6:47:15 PM
+    Author     : kartikeys
+    Description:
+        This file used to show style into pop up screen
+*/
+
+/* 
+   TODO customize this sample style
+   Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+
+#fade { /*--Transparent background layer--*/
+	display: none; /*--hidden by default--*/
+	background: #5f6c7f;
+	position:fixed; left: 0; top: 0;
+	width: 100%; height: 100%;
+	opacity: .80;
+	z-index: 9999;
+    
+}
+#fade1{ /*--Transparent background layer--*/
+	display: none; /*--hidden by default--*/
+	background: #d9eeef;
+	position: fixed; left: 0; top: 0;
+	width: 100%; height: 100%;
+	opacity: .40;
+	z-index: 9999;
+       /*  min-height: 1000px; */
+}
+
+
+.popup_block{
+	display: none; /*--hidden by default--*/
+	background: #fff;
+	float: left;
+	position: fixed;
+	top: 50%; left: 55%;
+	z-index: 99999;
+	/*--CSS3 Box Shadows--*/
+	/*--CSS3 Rounded Corners--*/
+    border: 2px solid #336699;
+    height: auto !important;
+}
+.popup_block1{
+	display: none; /*--hidden by default--*/
+	background: #fff;
+	float: left;
+	position: fixed;
+	top: 50%;
+	left: 55%;
+	z-index: 99999;
+	/*--CSS3 Box Shadows--*/
+	/*--CSS3 Rounded Corners--*/
+    border: 2px solid #336699;
+    height: auto !important;
+}
+.popup_block2{
+	display: none; /*--hidden by default--*/
+	background: #fff;
+	float: left;
+	position: fixed;
+	top: 50%;
+	left: 55%;
+	padding-bottom:5px;
+	z-index: 99999;
+	/*--CSS3 Box Shadows--*/
+	/*--CSS3 Rounded Corners--*/
+    border: 2px solid #336699;
+    height: auto !important;
+   /*-- width: 40% !important; --*/
+}
+
+/*--Making IE6 Understand Fixed Positioning--*/
+
+#fade1{
+	position: absolute;
+}
+
+.popup_block {
+	position: fixed;
+}
+.popup_block1{
+	position: fixed;
+}
+.popup_block .header {height:30px; line-height:30px; width:99%;/* background: url(../images/altheaderbox.png) repeat-x;*/ color:#fff;background-color:#3D6EA0; padding-left:1%; text-align:left;margin-bottom: 1px;}
+.popup_block1 .header {height:30px; line-height:30px; width:99%; background: url(../images/altheaderbox.png) repeat-x; color:#fff; padding-left:1%; text-align:left;margin-bottom: 5px; }
+.popup_block2 .header
+{
+	height: 30px;
+	line-height: 30px;
+	width: 99%;
+	background: url(../images/altheaderbox.png) repeat-x;
+	color: #FFFFFF;
+	padding-left: 1%;
+	text-align: left;
+	margin-bottom: 5px;
+}
+
+.close{
+  color: #FFFFFF;
+    font-weight: bold;
+    position: absolute;
+    right: 10px;
+    text-decoration: none;
+    top: 2px;}
