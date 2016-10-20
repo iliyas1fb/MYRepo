@@ -1,0 +1,71 @@
+------------NEW DATABASE___________Create Table -----------------
+
+_--CREATE TABLE PORTAL_SVR_USERACCOUNT
+(
+  usr_id numeric NOT NULL,
+  usr_loginname character varying(50) NOT NULL,
+  usr_lastname character varying(50) NOT NULL,
+  usr_firstname character varying(50) NOT NULL,
+  usr_email character varying(200) NOT NULL,
+  badlogincount numeric,
+  phone_number character varying(40) NOT NULL,
+  created_by numeric NOT NULL,
+  created_date timestamp(6) with time zone NOT NULL,
+  password character varying(250) NOT NULL,
+  heirarcy_type numeric(10,0),
+  isloggedin character varying(1) NOT NULL DEFAULT 'N'::character varying,
+  CONSTRAINT us_pkey PRIMARY KEY (usr_id),
+  CONSTRAINT us_usr_loginname_key UNIQUE (usr_loginname)
+)
+
+
+CREATE SEQUENCE USERACCOUNT_SEQ
+  INCREMENT 1
+  MINVALUE 2000
+  MAXVALUE 9223372036854775807
+  START 2001
+  CACHE 1;
+  
+  
+  
+  CREATE TABLE PORTAL_SVR_USERPERMISSION
+(
+  permission_id numeric NOT NULL,
+  permission_type character varying(50),
+  permission_name character varying(500),
+  status numeric NOT NULL,
+  created_by numeric,
+  created_date date,
+  modified_by numeric,
+  modified_date date,
+  permission_description character varying(50),
+  seq numeric,
+  hierarchy_type numeric,
+  parent_id numeric,
+  CONSTRAINT perm_pkey PRIMARY KEY (permission_id)
+)
+
+
+CREATE TABLE PORTAL_SVR_MERCHANTACCOUNT
+(
+  id numeric NOT NULL,
+  display_name character varying(50) NOT NULL,
+  business_name character varying(50) NOT NULL,
+  created_by numeric,
+  mid character varying(50) NOT NULL,
+  system_generated character varying(15),
+  title character varying(10),
+  first_name character varying(50),
+  last_name character varying(50),
+  contact_number character varying(50),
+  email character varying(50) NOT NULL,
+  address character varying(50),
+  country numeric,
+  state numeric,
+  city character varying(50),
+  zipcode character varying(50),
+  created_date timestamp(6) with time zone,
+  modified_date timestamp(6) with time zone,
+  modified_by numeric,
+  CONSTRAINT iid_pkey PRIMARY KEY (id)
+)
