@@ -1,0 +1,420 @@
+/**
+ * 
+ */
+package org.persistent.service.pojo;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+/**
+ * @author iliyasm
+ *
+ */
+@Entity
+@Table(name="PORTAL_SVR_MERCHANTACCOUNT")
+public class PortalSvrMerchantAccount implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	
+	@Id
+	@SequenceGenerator(name = "MyAccount", sequenceName = "USERACCOUNT_SEQ", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MyAccount")
+	@Column(name="id")
+	private long id;
+	
+	@Column(name="display_name")
+	private String displayName;
+	
+	
+	@Column(name="business_name")
+	private String businessName;
+	
+	
+	@Column(name="created_by")
+	private long createdby;
+	
+	
+	@Column(name="mid")
+	private String merchantId;
+	
+	
+	@Column(name="system_generated")
+	private String systemGenerated;
+	
+	@Column(name="title")
+	private String title;
+	
+	@Column(name="usr_firstname")
+	private String firstname;
+	
+	@Column(name="usr_lastname")
+	private String lastname;
+	
+	@Column(name="contact_number")
+	private String contactNumber;
+	
+	@Column(name="email")
+	private String email;
+	
+	
+	@Column(name="address")
+	private String address;
+	
+	
+	@Column(name="country")
+	private long country;
+	
+	
+	@Column(name="state")
+	private long state;
+	
+	
+	@Column(name="city")
+	private String city;
+	
+	@Column(name="zipcode")
+	private String zipcode;
+	
+			
+	@Column(name="created_date")
+	private Timestamp createddate;
+	
+	
+	
+/*	@Column(name="modified_date")
+	private Timestamp modifiedDate;
+	
+	@Column(name="modified_by")
+	private long modified_by;*/
+	
+	
+	
+	
+	
+	//constructor
+	public PortalSvrMerchantAccount() {
+		
+		
+	}
+
+
+
+	/**
+	 * @return the id
+	 */
+	public long getId() {
+		return id;
+	}
+
+
+
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+
+	/**
+	 * @return the displayName
+	 */
+	public String getDisplayName() {
+		return displayName;
+	}
+
+
+
+	/**
+	 * @param displayName the displayName to set
+	 */
+	public void setDisplayName(String displayName) {
+		this.displayName = displayName;
+	}
+
+
+
+	/**
+	 * @return the businessName
+	 */
+	public String getBusinessName() {
+		return businessName;
+	}
+
+
+
+	/**
+	 * @param businessName the businessName to set
+	 */
+	public void setBusinessName(String businessName) {
+		this.businessName = businessName;
+	}
+
+
+
+	/**
+	 * @return the createdby
+	 */
+	public long getCreatedby() {
+		return createdby;
+	}
+
+
+
+	/**
+	 * @param createdby the createdby to set
+	 */
+	public void setCreatedby(long createdby) {
+		this.createdby = createdby;
+	}
+
+
+
+	/**
+	 * @return the merchantId
+	 */
+	public String getMerchantId() {
+		return merchantId;
+	}
+
+
+
+	/**
+	 * @param merchantId the merchantId to set
+	 */
+	public void setMerchantId(String merchantId) {
+		this.merchantId = merchantId;
+	}
+
+
+
+	/**
+	 * @return the systemGenerated
+	 */
+	public String getSystemGenerated() {
+		return systemGenerated;
+	}
+
+
+
+	/**
+	 * @param systemGenerated the systemGenerated to set
+	 */
+	public void setSystemGenerated(String systemGenerated) {
+		this.systemGenerated = systemGenerated;
+	}
+
+
+
+	/**
+	 * @return the title
+	 */
+	public String getTitle() {
+		return title;
+	}
+
+
+
+	/**
+	 * @param title the title to set
+	 */
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+
+
+	/**
+	 * @return the firstname
+	 */
+	public String getFirstname() {
+		return firstname;
+	}
+
+
+
+	/**
+	 * @param firstname the firstname to set
+	 */
+	public void setFirstname(String firstname) {
+		this.firstname = firstname;
+	}
+
+
+
+	/**
+	 * @return the lastname
+	 */
+	public String getLastname() {
+		return lastname;
+	}
+
+
+
+	/**
+	 * @param lastname the lastname to set
+	 */
+	public void setLastname(String lastname) {
+		this.lastname = lastname;
+	}
+
+
+
+	/**
+	 * @return the contactNumber
+	 */
+	public String getContactNumber() {
+		return contactNumber;
+	}
+
+
+
+	/**
+	 * @param contactNumber the contactNumber to set
+	 */
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+
+
+
+	/**
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+
+
+	/**
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+
+
+	/**
+	 * @return the address
+	 */
+	public String getAddress() {
+		return address;
+	}
+
+
+
+	/**
+	 * @param address the address to set
+	 */
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+
+
+	/**
+	 * @return the country
+	 */
+	public String getCountry() {
+		return country;
+	}
+
+
+
+	/**
+	 * @param country the country to set
+	 */
+	public void setCountry(String country) {
+		this.country = country;
+	}
+
+
+
+	/**
+	 * @return the state
+	 */
+	public String getState() {
+		return state;
+	}
+
+
+
+	/**
+	 * @param state the state to set
+	 */
+	public void setState(String state) {
+		this.state = state;
+	}
+
+
+
+	/**
+	 * @return the city
+	 */
+	public String getCity() {
+		return city;
+	}
+
+
+
+	/**
+	 * @param city the city to set
+	 */
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+
+
+	/**
+	 * @return the zipcode
+	 */
+	public String getZipcode() {
+		return zipcode;
+	}
+
+
+
+	/**
+	 * @param zipcode the zipcode to set
+	 */
+	public void setZipcode(String zipcode) {
+		this.zipcode = zipcode;
+	}
+
+
+
+	/**
+	 * @return the createddate
+	 */
+	public Timestamp getCreateddate() {
+		return createddate;
+	}
+
+
+
+	/**
+	 * @param createddate the createddate to set
+	 */
+	public void setCreateddate(Timestamp createddate) {
+		this.createddate = createddate;
+	}
+
+
+	
+	
+	
+	
+}

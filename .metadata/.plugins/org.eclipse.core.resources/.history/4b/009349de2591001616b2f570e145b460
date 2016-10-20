@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:lang="http://www.springframework.org/schema/lang"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd
+		http://www.springframework.org/schema/lang http://www.springframework.org/schema/lang/spring-lang.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    
+    
+	 <context:annotation-config/>
+	
+	<context:component-scan base-package="org.persistent.service.*" />
+
+	<context:property-placeholder location="file:${propfilepath}/Portal.properties"/>
+		
+	<!--  <tx:annotation-driven />
+	
+	  <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+                    <property name="driverClass"><value>oracle.jdbc.driver.OracleDriver</value></property>
+					<property name="driverClass"><value>${jdbc.driverClassName}</value></property>                 
+                    <property name="jdbcUrl"><value>${jdbc.url}</value></property>
+                    <property name="user"><value>${jdbc.username}</value></property>
+                    <property name="password"><value>${jdbc.password}</value></property> 
+                    <property name="initialPoolSize"><value>5</value></property>
+                    <property name="minPoolSize"><value>5</value></property>
+                    <property name="maxPoolSize"><value>15</value></property>
+                    <property name="maxIdleTime"><value>160</value></property>
+                    <property name="idleConnectionTestPeriod"><value>60</value></property>
+                    <property name="acquireIncrement"><value>1</value></property>
+                    <property name="maxStatements" value="500" />
+                    <property name="maxAdministrativeTaskTime"><value>300</value></property>  
+                    <property name="unreturnedConnectionTimeout"><value>900</value></property> 
+            </bean>
+	
+		<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+			<property name="dataSource" ref="dataSource" />
+		</bean>
+	
+		<bean id="payexJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+			<property name="dataSource" ref="dataSource" />
+		</bean> -->
+	
+	
+	
+	
+	
+	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource" >
+		<property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<property name="url" value="${jdbc.url}"/>
+		<property name="username" value="${jdbc.username}"/>
+		<property name="password" value="${jdbc.password}"/>
+	</bean>
+	
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource" ref="dataSource" />
+		<property name="annotatedClasses">
+			<list>
+				<value>org.persistent.service.pojo.PortalSvrUserAccount</value>	
+				<value>org.persistent.service.pojo.PortalSvrUserPermission</value>	
+				<value>org.persistent.service.pojo.PortalSvrMerchantAccount</value>
+				<!-- <value>com.cof.dao.COFSvrUser</value> -->
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">${jdbc.dialect}</prop>
+				<prop key="hibernate.show_sql">${jdbc.true}</prop>
+				<prop key="hibernate.hbm2ddl.auto">${jdbc.update}</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="hibernateTemplate" class="org.springframework.orm.hibernate3.HibernateTemplate">
+			<property name="sessionFactory" ref="sessionFactory" />
+	</bean> 
+		
+	
+	<!--<bean id="transactionManager"
+ 		class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+		<property name="dataSource" ref="dataSource" />
+	</bean>	 -->
+	
+	
+	<bean id="userDao" class="org.persistent.service.dao.Impl.UserDAOImpl">
+<!-- 	<property name="hibernateTemplate"> 
+	<ref bean="hibernateTemplate"/>
+	</property> -->
+</bean>
+
+<bean id="merchantDAO" class="org.persistent.service.dao.Impl.MerchantDAOImpl">
+		<!-- <property name="jdbcTemplate" ref="payexJdbcTemplate"></property> -->
+</bean>
+
+
+	
+	<!-- <tx:annotation-driven  transaction-manager="transactionManager"/> -->
+	
+	
+	
+	
+	
+		
+		
+		<!-- <property name="jdbcTemplate" ref="payexJdbcTemplate" /> -->
+		<!-- <property name="resetBadCount" ref="UPDATE_USR_BADLOGIN_COUNT" /> -->
+		
+	
+	
+	
+	
+<!-- 	<bean id="userRoleDAO" class="org.persistent.service.Impl.UserRoleDAOImpl">
+		
+		</bean>
+		
+		<bean id="commonsDAO" class="org.persistent.service.Impl.CommonDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean>
+		
+		
+			
+	  -->
+		
+	
+	<!-- 
+	
+	<bean id="userRoleDAO" class="com.omnypay.webui.system.admin.user.dao.UserRoleDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean>
+	
+	<bean id="saleChannelBankDAO" class="com.omnypay.webui.system.admin.salebank.dao.SaleChannelBankDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean>
+
+
+	<bean id="transactionSearchDAO" class="com.omnypay.webui.system.admin.transaction.dao.TransactionSearchDAOImplNew">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean>
+	
+	<bean id="merchantConfigurationDAO" class="com.omnypay.webui.system.admin.configuration.dao.MerchantConfigurationDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean>
+	
+	<bean id="resetNewPasswordDAO" class="com.omnypay.webui.security.dao.ResetNewPasswordDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean> 
+	
+	<bean id="qrCodeConfigurationDAO" class="com.omnypay.webui.system.admin.configuration.dao.QRCodeConfigurationDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean> 
+	
+
+ 	<bean id="tokenManageDAO" class="com.omnypay.webui.system.token.dao.TokenManageDaoImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean> 
+	
+	
+	
+	<bean id="manageStoreDAO" class="com.omnypay.webui.system.admin.managestore.dao.ManageStoreDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean> 
+	
+	
+	<bean id="manageRewardPointDAO" class="com.omnypay.webui.system.admin.managereward.dao.ManageRewardPointDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean> 
+	
+	<bean id="userCouponDAO" class="com.omnypay.webui.system.admin.managecoupon.dao.UserCouponDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean> 
+
+	<bean id="merchantUserDAO" class="com.omnypay.webui.system.admin.managemerchantusers.dao.MerchantUserDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean> 
+	
+	<bean id="userCouponAssocationDAO" class="com.omnypay.webui.system.admin.managecoupon.dao.UserCouponAssociationDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean> 
+	
+	<bean id="userCouponFilterDAO" class="com.omnypay.webui.system.admin.managecoupon.dao.UserCouponAssociationFilterDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean> 
+	
+	<bean id="couponExceptionDAO" class="com.omnypay.webui.system.admin.managecoupon.dao.CouponExceptionDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean> 
+	
+	
+	<bean id="couponDiscountDAO" class="com.omnypay.webui.system.admin.managecoupon.dao.CouponDiscountDAOImpl">
+		<property name="jdbcTemplate" ref="payexJdbcTemplate"></property>
+	</bean>  -->
+</beans>

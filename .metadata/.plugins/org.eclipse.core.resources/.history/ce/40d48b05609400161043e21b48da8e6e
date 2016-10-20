@@ -1,0 +1,370 @@
+package com.omnypay.webui.system.admin.user.prl;
+
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.json.simple.JSONObject;
+import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.omnypay.framework.common.exception.OMNYPAYServiceException;
+import com.omnypay.framework.common.util.ErrorCodeConstants;
+import com.omnypay.framework.common.util.OMNYPAYConstants;
+import com.omnypay.webui.common.message.MessageUtil;
+import com.omnypay.webui.log.utils.Log4jAdapter;
+import com.omnypay.webui.log.utils.LogDetails;
+import com.omnypay.webui.security.service.UserService;
+import com.omnypay.webui.security.vo.OmnypayPermissionVO;
+import com.omnypay.webui.security.vo.UserVO;
+import com.omnypay.webui.system.admin.user.bsl.IUserRoleService;
+import com.omnypay.webui.system.admin.vo.GridListResponse;
+import com.omnypay.webui.system.admin.vo.HierachyVO;
+import com.omnypay.webui.system.admin.vo.RoleVO;
+
+
+
+@Controller
+@RequestMapping("/user")
+public class RoleController {
+	/** The LOGGER. */
+	private final static Log4jAdapter LOGGER = Log4jAdapter.getInstance();
+
+	/** The CLAS s_ name. */
+	private final String className = this.getClass().getName();
+
+	@Resource(name = "userRoleService")
+	private IUserRoleService userRoleService;
+
+	@Resource(name = "userService")
+	private UserService userService;
+
+	@RequestMapping(value = "/manageRoles", method = RequestMethod.GET)
+	public String getManageRoles() {
+
+		String methodName = "getManageRoles";
+		LOGGER.debug(className, methodName, "Entering into getManageRoles");
+		return "system/roleList";
+	}
+
+	@RequestMapping(value = "/viewUsersPage", method = RequestMethod.GET)
+	public String getViewUsersPage(HttpServletRequest request) {
+		String methodName = "getViewUsersPage";
+		LOGGER.debug(className, methodName, "Entering into getViewUsersPage");
+		request.setAttribute("role", request.getParameter("role"));
+		return "system/viewUsers";
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/getRoleList", method = RequestMethod.GET)
+	public @ResponseBody
+	GridListResponse getRoleList(HttpServletRequest req,
+			HttpServletResponse res, HttpSession session) {
+		RoleVO roleVO = new RoleVO();
+		String methodName = "getRoleList";
+		JSONObject object = new JSONObject();
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA).append("Arg userName=").append("")
+										.append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName,sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		List<RoleVO> list = null;
+		try {
+			list = userRoleService.getRoles(roleVO);
+		} catch (OMNYPAYServiceException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer
+					.append("OMNYPAYServiceException occured while getting the List<RoleVO>")
+					.append(OMNYPAYConstants.COMMA).append(sb)
+					.append("Error Code : ").append(pdae.getErrorCode())
+					.append(OMNYPAYConstants.COMMA).append("Error Message : ")
+					.append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			object.put("errorMessage", MessageUtil.getMessage(pdae.getErrorCode()));
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occured while getting the Role List")
+					.append(OMNYPAYConstants.COMMA).append(sb)
+					.append("Error Code : ")
+					.append(ErrorCodeConstants.GET_ROLE)
+					.append(OMNYPAYConstants.COMMA).append("Error Message : ")
+					.append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			object.put("errorMessage", MessageUtil.getMessage(ErrorCodeConstants.GET_ROLE));
+		}
+
+		GridListResponse response = new GridListResponse();
+		response.setRows(list);
+		response.setRecords(String.valueOf(list.size() - 1));
+		response.setPage(OMNYPAYConstants.PAGE);
+		response.setTotal(OMNYPAYConstants.TOTAL);
+		return response;
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/hierarchyList", method = RequestMethod.GET)
+	public @ResponseBody
+	JSONObject getHierarchyList() {
+		String methodName = "getHierarchyList";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName())
+				.append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName,
+				sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		JSONObject object = new JSONObject();
+		// Data referencing for java skills list box
+		try {
+			List<HierachyVO> list = userRoleService.getHierarchyInfo();
+			List<HierachyVO> l=new ArrayList<HierachyVO>();
+			for(HierachyVO hierachyVO :list){
+			if(!hierachyVO.getGroupName().equals("System Admin - Manager"))
+			{
+				l.add(hierachyVO);
+				
+			}					
+				list=l;
+		}
+			object.put("response", list);
+		} catch (OMNYPAYServiceException pdae) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer
+					.append("OMNYPAYServiceException occured while maxPAmtOptionPerUserList")
+					.append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer
+					.append("Exception occured while maxPAmtOptionPerUserList")
+					.append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, ex, errorBuffer);
+		}
+		LOGGER.debug(className, methodName,
+				sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		return object;
+	}
+
+	@RequestMapping(value = "/search", method = RequestMethod.GET)
+	public @ResponseBody
+	GridListResponse getBankSearchData(HttpServletRequest req,
+			HttpServletResponse res, Principal principal, String roleName,
+			String roleDesc, String status) throws OMNYPAYServiceException {
+
+		RoleVO roleVO = new RoleVO();
+		if (!(roleName == null || "".equals(roleName))) {
+			roleVO.setRoleName(roleName);
+		} else {
+			roleVO.setRoleName(null);
+		}
+		if (!(roleDesc == null || "".equals(roleDesc))) {
+			roleVO.setRoleDesc(roleDesc);
+		} else {
+			roleVO.setRoleDesc(null);
+		}
+		if (!(status == null || "".equals(status))) {
+			roleVO.setStatus(status);
+		} else {
+			roleVO.setStatus(null);
+		}
+		List<RoleVO> list = userRoleService.getRoles(roleVO);
+
+		GridListResponse response = new GridListResponse();
+
+		response.setRows(list);
+		response.setRecords(String.valueOf(list.size()));
+		response.setPage("1");
+		response.setTotal("10");
+
+		return response;
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/saveRoleInfo", method = RequestMethod.GET)
+	public @ResponseBody
+	JSONObject saveRoleInfo(@RequestParam("roleName") String roleName,
+	@RequestParam("roleDesc") String roleDesc,
+			@RequestParam("hierarchyList") String hierarchyList,
+			@RequestParam("status") String status,
+			@RequestParam("str") String str
+	) {
+
+		String methodName = "saveRoleInfo";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName,
+				sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		JSONObject object = new JSONObject();
+		Long count = 0L;
+		RoleVO roleVO = new RoleVO();
+		HierachyVO hierachyVO = new HierachyVO();
+		try {
+
+			if (str.charAt(str.length() - 1) == ','){
+				str = str.substring(0, str.length() - 1);
+			}
+			roleVO.setRoleName(roleName);
+			roleVO.setRoleDesc(roleDesc);
+			hierachyVO.setGroupId(Long.valueOf(String.valueOf(hierarchyList)));
+			roleVO.setHierachyVO(hierachyVO);
+			roleVO.setStatus(status);
+			roleVO.setCreatedBy(logDetails.getUserName());
+			roleVO.setPermissionIds(str);
+
+			roleVO = userRoleService.createRole(roleVO);
+
+		} catch (OMNYPAYServiceException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("OMNYPAYServiceException occured while creating the role")
+					.append(OMNYPAYConstants.COMMA).append(sb)
+					.append("Error Code : ").append(pdae.getErrorCode())
+					.append(OMNYPAYConstants.COMMA).append("Error Message = ")
+					.append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			object.put("errorMessage", MessageUtil.getMessage(pdae.getErrorCode()));
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occured while creating the role")
+					.append(OMNYPAYConstants.COMMA).append(sb)
+					.append("Error Code : ")
+					.append(ErrorCodeConstants.CREATE_ROLE)
+					.append(OMNYPAYConstants.COMMA).append("Error Message : ")
+					.append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			object.put("errorMessage", MessageUtil.getMessage(ErrorCodeConstants.CREATE_ROLE));
+		}
+		object.put("count", count);
+		LOGGER.debug(className, methodName,
+				sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		return object;
+
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/getPermissionVOList", method = RequestMethod.GET)
+	public @ResponseBody
+	JSONObject getPermissionVOList(@RequestParam("groupId") Long groupId)
+			throws OMNYPAYServiceException {
+		JSONObject object = new JSONObject();
+		List<OmnypayPermissionVO> list = userService.getPermissionBaseOnHeriarchy(groupId);
+		object.put("response", list);
+		return object;
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/getRoleEdit", method = RequestMethod.GET)
+	public @ResponseBody
+	JSONObject getEdit(@RequestParam("roleId") Long roleId)
+			throws OMNYPAYServiceException {
+		String methodName = "getRoleEdit";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName())
+				.append(OMNYPAYConstants.COMMA).append("roleId=").append(roleId);
+		LOGGER.debug(className, methodName,
+				sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		JSONObject object = new JSONObject();
+		try {
+			List<RoleVO> list = userRoleService.editRole(roleId);
+			object.put("role", list.get(0));
+			List<OmnypayPermissionVO> hierarchy = userService.getPermissionBaseOnHeriarchy(list.get(0).getHierachyVO().getGroupId());
+			object.put("response", hierarchy);
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer.append("Exception occured while getRoleInfo")
+					.append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, ex, errorBuffer);
+		}
+		LOGGER.debug(className, methodName,
+				sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		return object;
+	}
+
+	@SuppressWarnings("unchecked")
+	@RequestMapping(value = "/updateRole", method = RequestMethod.GET)
+	public @ResponseBody
+	JSONObject updateRole(
+			@RequestParam("hierarchyListId") Long hierarchyListId,
+			@RequestParam("roleIdEdit") Long roleIdEdit,
+			@RequestParam("roleDescIdEdit") String roleDescIdEdit,
+			@RequestParam("statusIdEdit") String statusIdEdit,
+			@RequestParam("str") String str) {
+		String methodName = "updateRole";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName())
+				.append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName,
+				sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		JSONObject object = new JSONObject();
+
+		try {
+			RoleVO roleVO = new RoleVO();
+			if (str.charAt(str.length() - 1) == ','){
+				str = str.substring(0, str.length() - 1);
+			}
+			roleVO.setRoleId(roleIdEdit);
+			roleVO.setRoleDesc(roleDescIdEdit);
+			roleVO.setStatus(statusIdEdit);
+			roleVO.getHierachyVO().setGroupId(hierarchyListId);
+			roleVO.setPermissionIds(str);
+			roleVO.setModifiedBy(logDetails.getUserName());
+			roleVO = userRoleService.updateRole(roleVO);
+		} catch (OMNYPAYServiceException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("OMNYPAYServiceException occured while updating the role")
+					.append(OMNYPAYConstants.COMMA).append(sb)
+					.append("Error Code : ").append(pdae.getErrorCode())
+					.append(OMNYPAYConstants.COMMA).append("Error Message : ")
+					.append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			object.put("errorMessage", MessageUtil.getMessage(pdae.getErrorCode()));
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occured while updating the role")
+					.append(OMNYPAYConstants.COMMA).append(sb)
+					.append("Error Code : ")
+					.append(ErrorCodeConstants.UPDATE_ROLE)
+					.append(OMNYPAYConstants.COMMA).append("Error Message : ")
+					.append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			object.put("errorMessage", MessageUtil.getMessage(ErrorCodeConstants.UPDATE_ROLE));
+		}
+
+		LOGGER.debug(className, methodName,
+				sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		return object;
+	}
+
+	@RequestMapping(value = "/getUserList", method = RequestMethod.GET)
+	public @ResponseBody
+	GridListResponse getUserList(HttpServletRequest request,
+			HttpServletResponse response) throws OMNYPAYServiceException {
+		UserVO userVO = new UserVO();
+		userVO.setLoginName(StringUtils.hasLength(request.getParameter("name")) ? request.getParameter("name") : null);
+		userVO.getRoleVO().setRoleId(StringUtils.hasLength(request.getParameter("role")) ? Long.parseLong(request.getParameter("role")) : null);
+		userVO.setEmail(StringUtils.hasLength(request.getParameter("emailId")) ? request.getParameter("emailId") : null);
+		userVO.setPhoneNumber(StringUtils.hasLength(request.getParameter("contactNo")) ? request.getParameter("contactNo"): null);
+		userVO.setStatus(StringUtils.hasLength(request.getParameter("status")) ? request.getParameter("status") : null);
+		userVO.getCountryVO().setCountryId(StringUtils.hasLength(request.getParameter("countryId")) ? Long.parseLong(request.getParameter("countryId")): null);
+		userVO.getHierachyVO().setGroupId(StringUtils.hasLength(request.getParameter("hierarchy")) ? Long.parseLong(request.getParameter("hierarchy")): null);
+
+		List<UserVO> list = userService.getUserInfoList(userVO);
+		GridListResponse responseGrid = new GridListResponse();
+		responseGrid.setRows(list);
+		responseGrid.setRecords(String.valueOf(list.size()));
+		responseGrid.setPage(OMNYPAYConstants.PAGE);
+		responseGrid.setTotal(OMNYPAYConstants.TOTAL);
+		return responseGrid;
+	}
+
+}

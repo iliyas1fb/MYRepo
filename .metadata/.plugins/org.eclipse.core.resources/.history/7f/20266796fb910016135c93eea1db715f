@@ -1,0 +1,12 @@
+/**
+ * 
+ */
+package org.portal.app.controller;
+
+/**
+ * @author iliyasm
+ *
+ */
+public class SignUpController {
+
+}

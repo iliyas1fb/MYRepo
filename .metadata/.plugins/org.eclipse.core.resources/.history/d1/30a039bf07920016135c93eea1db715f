@@ -1,0 +1,900 @@
+##############JSP #############JSP ##################JSP###################
+title.PortalLogin = Portal - Login
+label.PasswordSent = Your password has been sent to your inbox
+label.Login = Login
+label.Password = Password
+label.confirmPassword = Confirm Password
+label.SignName = Name
+label.MobileNumber = Mobile Number
+
+label.UserName = User Name
+label.ForgotPassword = Forgot Password?
+#label.SignUp = Sign Up
+label.FirstName = First Name
+label.LastName = Last Name
+button.Login = Login
+
+label.Copyright = Copyright
+label.PortalFooter = Portal
+################################### titile ##################
+title.ForgotPassword = Forgot Password
+title.signup = SignUp
+
+# menu ________________________________
+menu_link.Configuration = Configuration
+menu_link.Home = Home
+menu_link.ManageBanks = Manage Banks
+menu_link.ManageMerchants = Manage Merchants
+menu_link.ManagePos=Manage Pos
+menu_link.ManageRoles = Manage Roles
+menu_link.ManageCoupons = Manage Coupons
+menu_link.ManageUsers = Manage Users
+menu_link.MerchantConfiguration = Merchant Configuration
+menu_link.TokenManagement = Token Management
+menu_link.TransactionReport = Transaction Report
+menu_link.Transactions = Transactions
+menu_link.UserConfiguration = User Configuration
+menu_link.CouponConfiguration =Coupon Configuration
+menu_link.ExceptionConfiguration =Exception Configuration
+menu_link.DiscountConfiguration =Discount Configuration
+menu_link.AssignConfiguration =Assign Configuration
+
+
+
+
+#******************BUTTON*********BUTTON*********BUTTON*********BUTTON*********BUTTON******************
+
+button.Approve = Approve
+button.Back = Back
+button.Cancel = Cancel
+button.Exit = Exit
+
+button.Next = Next
+button.Ok = Ok
+button.Reject = Reject
+button.Reload = Reload
+button.Reset = Reset
+button.Save = Save
+button.Search = Search
+button.Submit = Submit
+button.Update = Update
+
+#******************************* Error Messages in Java Files ***********************************
+
+error.UserNotExist = Please check your details and try again!
+error.account.Expired = User Account has Expired!
+error.account.Inactive = Account Inactive!
+error.account.Locked = Account Locked!
+error.invalid.PasswordFormat = Password must contain at least one uppercase letter, one lowercase letter, one number and one special character(!, @, #, $, _ or -)
+error.invalid.PasswordFormat = Password must contain at least one uppercase letter, one lowercase letter, one number and one special character(!, @, #, $, _ or -)
+error.invalid.PasswordLength = Password length cannot be less than 6 or more than 18 characters
+error.invalid.PasswordMismatch = New Password and Confirm Password did not match
+error.invalid.User = Invalid User!
+error.invalid.Username = Invalid Username!
+error.message.LockedOrExpired = LOCKED or EXPIRED merchant cannot be modified.
+error.message.PleaseSelectRole = Please select role
+error.message.PleaseSelectRow = Please select row
+error.message.PleaseselectPENDINGAPPROVAL = Please select PENDING_APPROVAL
+error.message.PleaseselectvalidMerchantEXPIRED = Please select valid Merchant (EXPIRED)
+error.password.Expired = The password is expired. Please contact customer care to reset your password
+error.required.ConfirmPassword = Confirm Password is required
+error.required.NewPassword = New Password is required
+error.required.OldPassword = Old Password is required
+error.required.Password = Please enter a valid Password!
+error.required.UserName = Please enter a valid username!
+error.required.Username = Please enter Username
+error.required.email = Please enter Email ID
+
+#******************LABEL*********LABEL*********LABEL*********LABEL*********LABEL******************
+label.DiscountConfig = Discount Configurations
+label.RewardConfig = Reward Configurations
+label.LoyaltyConfig = Loyalty Point Configurations
+label.AccountNumber=Account Number
+label.Add = Add
+label.AddBank = Add Bank
+label.AddConfiguration = Add POS Configuration
+label.AddMerchant = Add Merchant
+label.AddRole = Add Role
+label.AddRole = Add Role
+label.AddStore = Add Store
+label.AddReward = Add Reward
+label.AddUser = Add User
+label.Address = Address
+label.Address1 = Address 1
+label.Address2 = Address 2
+label.AddressValidation = Address Validation
+label.AirlineData = Airline Data
+label.Alert = Alert
+
+label.ApproveReject = Approve/Reject
+label.ApproveRejectKYCChecklist = Approve/Reject KYC Checklist
+label.ApproveRejectMerchant = Approve/Reject Merchant
+label.AreaCode = Area Code
+label.AuthorisedPerson = Authorised Person
+label.AutoRenew = Auto Renew
+label.Back = Back
+label.Back = Back
+label.BankID = Bank ID
+label.BankName = Bank Name
+label.BankSettleDays= Bank Settle Days
+label.BeneficialOwner = Beneficial Owner
+label.BeneficialOwnerName = Beneficial Owner Name
+label.BeneficialOwnersIdentified = Beneficial Owners Identified
+label.BrandName= Brand Name
+label.Business = Business
+label.BusinessName = Business Name
+label.CardLast4Digits = A/C NUM Last 4 Digits
+label.CardType = A/C TYPE
+label.ChangeLicenseValidity = Change License Validity
+label.ChangeyourPassword = Change Your Password
+label.ChargeDescriptor = Charge Descriptor
+label.ChecksumEnabled = Checksum Enabled
+label.ChildMerchant=Child Merchant
+label.City = City
+label.ClickHere = Click Here
+label.Comments = Comments
+label.CompanyDocuments = Company Documents
+label.CompanyRegistrationNumber = Company Registration Number
+label.Configuration = Configuration
+label.ConfigurationMerchantRetail = Store Configuration : Merchant - Retail
+label.ConfirmPassword = Confirm Password
+label.ContactDetails = Contact Details
+label.ContactNo = Contact Number
+label.ContactNumber = Contact Number
+label.ContactPerson = Contact Person
+
+label.CorporateID = Corporate ID
+label.Country = Country
+label.CountryAreaCode = Country Code
+label.Credit = Credit
+label.Currency = Currency
+label.Currency = Currency
+label.CustomElement = Custom Element
+label.CustomName = Custom Name
+label.DCC = DCC
+label.DST = DST
+label.Dashboard = Dashboard
+label.Description = Description
+label.Descriptor = Descriptor
+label.DirectorName1 = Director Name1
+label.DirectorName2 = Director Name2
+label.DirectorNameAddress = Director's Name and Address
+label.DisplayName = Display Name
+label.DocumentType = Document Type
+label.Edit = Edit
+label.EditBank = Edit Bank
+label.EditBankDetails = Edit Bank Details
+label.EditConfigDetails = Edit POS Configuration Details
+label.EditConfiguration = Edit POS Configuration
+label.EditMerchant = Edit Merchant
+label.EditRole = Edit Role
+label.EditRole = Edit Role
+label.EditStore = Edit Store
+label.EditUser = Edit User
+label.EmailAddress = Email Address
+label.EmailID = Email ID
+label.EmailId = Email ID
+label.EncryptRequestResponse = Encrypt Request / Response
+label.EndDate = End Date
+label.EntityIdName = Entity ID/Name
+label.ExportOptions = Export Options
+label.ExportToCSV = Export to CSV
+label.ExportToExcel = Export to Excel
+label.ExportToPDF = Export to PDF
+
+
+label.ForgotPasswordChanged = Password reset. Please check your email.
+label.ForgotPasswordFormMessage = Please enter Username and Email ID.
+label.ForgotPasswordType = SYSTEM
+label.FraudScreening = Fraud Screening
+label.GoToLoginPage = to go to the Login page
+label.Helpdesk247 = Technical/Helpdesk 24/7
+label.Hierarchy = Hierarchy
+label.HostedPayPage = Hosted Pay Page
+label.IsKYCValidatedbybank = Is KYC Validated by bank
+label.KYC = KYC
+label.KYCCHECKLIST = KYC CHECKLIST
+label.KYCCheckList = KYC CheckList
+label.KYCDocumentLocation = KYC Document Location
+label.Language = Language
+label.Last4Digits = A/C NUM Last 4 Digits
+label.Last4Digits = A/C NUM Last 4 Digits
+
+label.Level1 = Level 1
+label.Level2 = Level 2
+label.Level23Data = Level 2/3 Data
+label.LicenseValidity = Merchant Identification Number (MID) 
+label.MCC = MCC
+label.MCP = MCP
+label.MID = MID
+label.MailSentSuccessfully = Mail has been successfully sent
+label.ManageBankSearch = Bank Search
+label.ManageBanks = Manage Banks
+label.ManageCorporateMerchantList = Manage Corporate Merchant List
+label.ManageCorporates = Manage Corporates
+label.ManageMerchantSearch = Merchant Search
+label.ManageMerchants = Manage Merchants
+label.ManagePos = Manage Pos
+label.ManageRole = Manage Roles
+label.ManageRoleSearch = Role Search
+label.ManageStores = Store Configuration
+label.ManageUserSearch = User Search
+label.ManageUsers = Manage Users
+label.MerchantConfiguration = Merchant Configuration
+label.MerchantId = Merchant ID
+label.MerchantRetail = Merchant - Retail
+label.MerchantTimeZone = Merchant TimeZone
+label.MerchantView = Merchant View
+label.MerchantXRef = Merchant XRef
+
+label.Name = Name
+label.NewPassword = New Password
+label.No = No
+label.NoRecordFound = No Record Found
+label.No = No
+label.No = No
+label.OldPassword = Old Password
+label.ParentMerchant=Parent Merchant
+label.ParentMid =Parent Mid
+
+label.PasswordChange = Change your Password. Your Password will expire in 7 days
+label.PasswordChangedSuccessfully = Password Changed Successfully
+label.PasswordChangedHelpDesk = Password Link Sent Successfully.
+label.PasswordCheck = Password
+
+label.PhoneNo = Phone Number
+label.PosId= POS ID
+label.PosSearch= Pos Search
+label.PosType= POS Type
+label.PreferredCurrency = Preferred Currency
+label.PrimaryEmail = Primary Email
+label.PublicQuotedCompany = Public Quoted Company
+label.Remarks = Remarks
+label.ResponseURL = Response URL
+label.Role = Role
+label.RoleDescription = Role Description
+label.RoleName = Role Name
+label.RoutingNumber= Routing Number
+label.SecondaryEmail = Secondary Email
+label.Select = Select
+#label.Select.admin = Admin
+label.Select.merchant = Merchant
+label.SelectAll = Select All
+label.SessionTimedOut = Sorry! Your session has expired.<br />Please login again to continue.
+#label.SessionTimeout = Session Timeout
+label.SoftDescriptor = Soft Descriptor
+label.SoftwareName=Software Name
+label.SoftwareVersion=Software Version
+label.Special = Special
+label.Stan_Number = Stan_Number 
+label.Stan_Number = Stan_Number 
+label.Standard = Standard
+label.StartDate = Start Date
+label.State/Province = State/Province
+label.Status = Status
+label.StockExchange = Stock Exchange
+label.StockSymbol = Stock Symbol
+label.StoreConfiguration=Store Configuration
+label.EditStoreDetails = Edit Store Details
+label.StoreID = Store ID
+label.StoreId = Store ID
+label.StoreName=Store Name
+label.SystemGenerated = System Generated
+label.TerminalId = Terminal ID
+label.ThreedSecure = 3D Secure
+label.TimeZone = TimeZone
+label.Title = Title
+label.TokenizationOption = Tokenization Option
+label.TokenManagement= Token Management
+label.TokenizationOption = Tokenization Option
+label.TransactionSearch = Transaction Search
+label.TxnAmount = Txn Amount
+label.TxnAmount = Txn Amount
+label.TxnDateTimestamp = Txn Date Timestamp
+label.TxnDateTimestamp = Txn Date Timestamp
+label.TxnID = Txn ID
+label.TxnID = Txn ID
+label.TxnStatus = Txn Status
+label.TxnStatus = Txn Status
+label.TxnType = Txn Type
+label.TxnType = Txn Type
+label.UserConfiguration = User Configuration
+
+label.Username = Username
+label.UsersList = Users List
+label.VAT/TAXRegistrationNo = VAT/Tax Registration No.
+label.ValidFrom = Valid From
+label.ValidTo = Valid To
+label.Verified = Verified
+label.View = View
+label.ViewKYCCheckList = View KYC Check List
+label.ViewMerchant = View Merchant
+label.ViewMerchantDetails = View Merchant Details
+label.ViewRole = View Role
+label.VirtualTerminal = Virtual Terminal
+label.Warning = Warning
+label.WebsiteURL = Website URL
+label.Welcome = Welcome
+label.Yes = Yes
+label.Yes = Yes
+label.Yes = Yes
+label.Zip/PostalCode = Zip/Postal Code
+label.qrCode = QR Code
+link.Back = Home
+link.Logout = Logout
+link.MyProfile = My Profile
+link.Support = Support
+link.View = View
+label.creditCards = Credit Cards
+label.debitCards = Debit Cards
+label.privateLabel = Private Label
+label.storeCards = Store
+label.giftCards = Gift Card
+label.merchantAccessKey = Merchant Access Key
+label.externalMerchant = External Merchant
+
+label.USERID = User ID
+label.RewardID = Reward ID
+label.RewardPointTotal = Reward Point Total
+label.RewardPointPending = Reward Point Pending
+label.RewardPointActive = Reward Point Active
+label.RewardPointExpired = Reward Point Expired
+label.RewardPointConverted = Reward Point Converted
+label.RewardPointCancelled = Reward Point Cancelled
+label.ActivationDate = Activation Date
+label.ExpiryDate = Expiry  Date
+
+label.EditReward= Edit Reward
+#label.AddReward = Add Store
+label.couponConfiguration=Offer Configuration
+label.loyaltyConfiguration=Loyalty Point Configuration
+label.couponConfiguration=CouponConfiguration
+label.AddCoupon = Add Coupon
+label.EditCoupon = Edit Coupon
+labe.CouponToUserConfiguration=Coupon to user configuration
+label.CouponSearch =  Coupon Search
+label.CouponTitle = Coupon Title
+label.EndDate =  End Date
+label.AddException = Add Exception
+label.EditCoupon = Edit Exception
+label.ExceptionConfig = Exception Configuration
+label.ExceptionDesc = EXCEPTION DESCRIPTION
+label.EditExceptionDetails = Edit Exception Details
+label.EditRewardDetails = Edit Reward Details
+label.DiscountType = Discount Type
+label.DiscountValue = Discount Value
+label.DiscountDesc = Discount Description
+
+label.RewardAmount=Amount
+label.Dollar=$
+label.MerchantId=MerchantId
+#******************MAIL*********MAIL*********MAIL*********MAIL*********MAIL******************
+
+mail.ResetPasswordSubject = Password Reset Request
+mail.UserCreateSubject = New {0} User
+mail.UserMail = Dear {0},<br/>Greetings from the {1} Team.<br/><br/>You were successfully registered for an account on<br><a href={2}>{3}</a><br/><br/>To access your account, please click on the following link:<br/><a href={4}>{5}</a><br/>or copy the link and paste it in your browser&#39s address bar.<br/><br/>Login to your account using following details:<br/><br/>Username: {6}<br/><br/>Your password will follow in separate mail.<br/><br/>If you have any questions, please do not hesitate to contact us by sending<br/>an email to <a href="mailto:{7}">{8}</a>, or call us at:{9}<br/><br/>Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.<br/><br/>Thank you,<br/>{10}.<br/>{11}
+mail.UserMailForgotPassword = Dear {0},<br/>Greetings from the {1} Team.<br/><br/>Your password has been reset.<br/><br/>To access your account, please click on the following link:<br/><a href={2}>{3}</a><br/>or copy the link and paste it in your browser&#39s address bar.<br/><br/>Your temporarily reset password will expire in 7 days and you will be asked to change it on your first login.<br/>Login to your account using the following details:<br/><br/>Password:{4}<br/><br/>If you have any questions, please do not hesitate to contact us by sending<br/>an email to <a href="mailto:{5}">{6}</a>, or call us at:{7}.<br/>Please contact us immediately if you did not request this password reset.<br/><br/>Please note you are only permitted to request two password resets in a 24 hour period.<br/><br/>Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.<br/><br/>Thank you,<br/>{8}<br/>{9}
+mail.UserMailPassword = Dear {0},<br/>Greetings from the {1} Team.<br/><br/>This email contains your system generated password to access the {2}.<br/>Please note your temporary password will expire in 7 days.<br/><br/>To access your account, please click on the following link:<br/><a href={3}>{4}</a><br/>or copy the link and paste it in your browser&#39s address bar.<br/><br/>Login to your account using the username shared in the previous email and the following password:<br/><br/>Password:{5}<br/><br/>If you have any questions, please do not hesitate to contact us by sending<br/>an email to <a href="mailto:{6}">{7}</a>, or call us at:{8}<br/><br/>Please do not reply to this automatically generated email. Any reply to this email address cannot be responded to.<br/><br/>Thank you,<br/>{9}.<br/>{10}
+
+#******************MENU_LINK*********MENU_LINK*********MENU_LINK*********MENU_LINK*********MENU_LINK******************
+
+mail.GetNewPasswithhelpdeskSubject=Password Reset Request
+mail.GetNewPasswithhelpdesk=Hi<br/><br/>Dear Recipient,<br/>We have received your request to reset password.<br/>To reset, please click the link below:<br/><br/><a href={0}>{1}</a><br/><br/><br/><br/>Regards,<br/>Omnypay Team
+
+mail.GetdownloadlinkhelpdeskSubject=APK Download Request
+mail.Getdownloadlinkhelpdesk=Hi<br/><br/>Dear Recipient,<br/>We have received your request to download apk .<br/>To Download, please click the link below:<br/><br/><a href={0}>{1}</a><br/><br/><br/><br/>Regards,<br/>Omnypay Team
+
+
+
+#******************************* Option Value ***********************************
+
+option.ACTIVE = ACTIVE
+option.ALL = ALL
+option.INACTIVE = INACTIVE
+option.Miss = Miss
+option.Mr = Mr.
+option.Mrs = Mrs.
+option.Ms = Ms.
+option.Select = Select
+option.VeriFone=VeriFone
+
+#******************SCRIPT_ERROR_MESSAGE*********SCRIPT_ERROR_MESSAGE*********SCRIPT_ERROR_MESSAGE*********SCRIPT_ERROR_MESSAGE*********SCRIPT_ERROR_MESSAGE******************
+
+script.error.AccNum = Please enter Account Number
+script.error.AccNumAllZero = Invalid Account Number
+script.error.AccNumLength = Account Number cannot be more or less than 7 digits
+script.error.AccNumeric = Account Number should contain only numerics
+script.error.Address1 = Please enter Address1
+script.error.Address1AlphaNumeric = Address1 should contain only alphanumerics, \\" # \\", \\" / \\", \\" , \\", \\" . \\", \\" - \\" with space
+script.error.Address1MaxLength = Address1 should contain maximum 100 characters
+script.error.Address2AlphaNumeric = Address2 should contain only alphanumerics, \\" # \\", \\" / \\", \\" , \\", \\" . \\", \\" - \\" with space
+script.error.Address2MaxLength = Address2 should contain maximum 100 characters
+script.error.AreaCodeManageBanks = Please enter Area Code
+script.error.AreaCodePattern = Area Code should contain only numerics
+script.error.BankCode = Please enter Bank ID
+script.error.BankCodeAllZero = Invalid Bank Id
+script.error.BankCodeAlphanumeric = Bank ID should contain only alphanumeric characters without space
+script.error.BankCodeLength = Bank ID cannot be more or less than 10 characters
+script.error.BankNameAlphanumerics = Bank Name can contain only alphanumerics with single space between words
+script.error.BankNameManageBanks = Please enter Bank Name
+script.error.BankNameManageBanksAlphanumeric = Bank Name must contain at least one alphabets
+script.error.BankNameMinmaxlengthManageBanks = Bank Name cannot contain less than 2 or more than 25 characters
+script.error.BankSettleDays = Please select Bank Settle Days
+script.error.BeneficialOwnerAddressAlphanumerics = Beneficial Owner Address should contain only alphanumerics, \\" # \\", \\" / \\", \\" , \\", \\" . \\", \\" - \\", with space
+script.error.BeneficialOwnerAddressShouldBeLessthan100Characters = Beneficial Owner Address should be less than 100 characters
+script.error.BeneficialOwnerNameAlphabets = Beneficial Owner Name should contain only alphabets with single space
+script.error.BeneficialOwnerNameShouldBeAtleast2Characters = Beneficial Owner Name should be at least 2 characters
+script.error.BeneficialOwnerNameShouldBeLessthan30Characters = Beneficial Owner Name should be less than 30 characters
+script.error.BrandName = Please enter Brand Name
+script.error.BrandNameAlphanumerics = Brand Name can contain only alphanumerics with single space between words
+script.error.BusinessNameAlphaNumerics = Business Name should contain only alphanumeric, \\".\\", \\"-\\" with space
+script.error.BusinessNameMinLength = Business Name cannot be less than 2 characters
+script.error.ChangePassMsg = Warning! Are you sure you want to reset the password of the corresponding user?
+script.error.ChangePassSuccessMsg = Password has been reset. New password will be send through email to the respective email id within 2 minutes.
+script.error.ChangeTokenSuccessMsg = Number of Tokens are updated
+script.error.City = Please enter City
+script.error.CityMaxLength = City cannot have more than 25 characters
+script.error.CityMinLength = City should be at least 2 characters
+script.error.CityPattern = City should contain only alphabets with single space between words
+script.error.Comment = Please enter Comments
+script.error.CommentsAlphabets = Comments should contain only alphabets with \\",\\" \\".\\" and space
+script.error.CommentsMinMaxLength = Comments should be at least 1 characters and less than 300 characters
+script.error.CompanyRegistrationNumberContainsOnlyAlphanumerics = Company Registration Number should contain only alphanumerics
+script.error.CompanyRegistrationNumberMinMaxLength = Company Registration Number should be at least 2 characters and less than 30 characters
+script.error.CompanyRegistrationNumberShouldBeAtleast2Characters = VAT Registration Number should be at least 2 characters and less than 30 characters
+script.error.CompanyRegistrationNumberShouldBeLessthan30Characters = Company Registration Number should be less than 30 characters
+script.error.ContactNoManageUser = Invalid Phone Number
+script.error.ContactPersonManageBanks = Please enter Contact Person
+script.error.ContactPersonManageBanksAlphabet = Contact Person should contain only alphabets with single space between two words
+script.error.Country = Please select Country
+script.error.CountryAreaCode = Please select Country Code
+script.error.CountryManageCorporate = Please select Country
+script.error.CurrencyManageCorporate = Please select Currency
+script.error.CustomContainsOnlyAlphanumerics = Custom Name should contain only alphanumerics
+script.error.CustomName = Please enter Custom Name
+script.error.CustomNameLength = Custom Name should contain 6 characters
+script.error.DifferentEmail = Level 1 and Level 2 Email Address should not be same in Contact Details (Technical/HelpDesk 24/7)
+script.error.Director1DescriptionAlphabets = Director1 Description should contain only alphabets with \\",\\" \\".\\" and space
+script.error.Director1DescriptionShouldBeAtleast1Characters = Director1 Description should be at least 1 characters
+script.error.Director1DescriptionShouldBeLessthan200Characters = Director1 Description should be less than 200 characters
+script.error.Director1NameContainsOnlyAlphbets = Director1 Name should contain only alphabets with single space between words
+script.error.Director1NameShouldBeAtleast2Characters = Director1 Name should be at least 2 characters
+script.error.Director1NameShouldBeLessthan25Characters = Director1 Name should be less than 25 characters
+script.error.Director2DescriptionAlphabets = Director2 Description should contain only alphabets with \\",\\" \\".\\" and space
+script.error.Director2DescriptionShouldBeAtleast1Characters = Director2 Description should be at least 1 characters
+script.error.Director2DescriptionShouldBeLessthan200Characters = Director2 Description should be less than 200 characters
+script.error.Director2NameContainsOnlyAlphbets = Director2 Name should contain only alphabets with single space between words
+script.error.Director2NameShouldBeAtleast2Characters = Director2 Name should be at least 2 characters
+script.error.Director2NameShouldBeLessthan25Characters = Director2 Name should be less than 25 characters
+script.error.DisplayNameAlphaNumerics = Display Name should contain only alphanumerics, \\".\\", \\"-\\" with space
+script.error.DisplayNameMaxLength = Display Name cannot be more than 25 characters
+script.error.EditOwnManagaRole = The logged in user cannot edit his own role. To view the role, click OK.
+script.error.EditOwnManagaUser = The logged in user cannot edit his own user Record.
+script.error.EndDateNotLessStart = End Date cannot be earlier than Start date
+script.error.EnterEmail = Please enter Email ID
+script.error.EnterEndDate = Please enter End Date
+script.error.EnterFields = Please enter at least one search term
+script.error.EnterStartDate = Please enter Start Date
+script.error.EntityIdManageUser = Please select Entity ID
+script.error.FirstNameAlphabets = First Name accepts only alphabets with single space between two words
+script.error.Hierarchy = Please select Hierarchy
+script.error.HierarchyManageUser = Please select Hierarchy
+script.error.InactivateUserMsg = Warning! Setting a Role Inactive will deactivate all the Users created with this Role. Are you sure you want to proceed?
+script.error.InactiveChangePassMsg = Cannot reset password of Inactive User
+script.error.InactiveEntityId = The logged in user cannot edit inactive Hierarchy.
+script.error.InvalidAreaCode = Invalid Area Code
+script.error.InvalidBusinessName = Invalid Business Name
+script.error.InvalidContactNumber = Invalid Contact Number
+script.error.InvalidEmail = Invalid Email ID
+script.error.InvalidEmailID = Invalid Email ID
+script.error.InvalidEmailId = Invalid Email ID
+script.error.InvalidKYCDocumentLocation = Invalid directory path or folder name for KYC Document Location
+script.error.InvalidMid = Invalid MID
+script.error.InvalidPrimaryEmail = Invalid Primary Email
+script.error.InvalidSecondaryEmail = Invalid Secondary Email
+script.error.InvalidStoreId = Invalid Store ID
+script.error.InvalidUserName = Invalid User Name
+script.error.KYCDocumentLocationMaxLength = KYC Document Location should contain maximum 50 characters
+script.error.LastNameAlphabets = Last Name should contain only alphabets with single space between two words
+script.error.Level1AreaCode = Please enter Level 1 Area Code
+script.error.Level1PhoneNoMinLength = Level 1 Phone Number cannot have less than 6 digits
+script.error.Level1PhoneNumberContainsOnlyNumerics = Level 1 phone number should contain only numerics
+script.error.Level2AreaCode = Please enter Level 2 Area Code
+script.error.Level2ContactNumberContainsOnlyNumerics = Level 2 Contact Number should contain only numerics
+script.error.Level2PhoneNoMinLength = Level 2 Phone Number cannot have less than 6 digits
+script.error.LevelOneCountryAreaCode = Please select Level 1 Country Area Code
+script.error.LevelOneNameContainsOnlyAlphabets = Level 1 Name should contain only alphabets with single space between words
+script.error.LevelOneNameShouldBeAtleast2Characters = Level 1 Name should be at least 2 characters
+script.error.LevelTwoAreaCodeAndPhoneNumber=Please Enter Level Two AreaCode and Phone Number
+script.error.LevelTwoCountryAreaCode = Please select Level Two Country Area Code
+script.error.LevelTwoNameContainsOnlyAlphabets = Level 2 Name should contain only alphabets with single space between words
+script.error.LevelTwoNameShouldBeAtleast2Characters = Level 2 Name should be at least 2 characters
+script.error.ManageBanksInvalidBankName = Bank Name is invalid
+script.error.MerchantId = Please select Merchant ID
+script.error.MobileCountryAreaCode = Please select Mobile Number Country Code
+script.error.MobileNoMaximumLength14 = Mobile Number cannot be more than 14 digits
+script.error.MobileNoMinimumLength6 = Mobile Number cannot be less than 6 digits
+script.error.MobileNumb = Please enter Mobile Number
+script.error.MobileNumber=Please Enter Mobile Number
+script.error.MobileNumbersAllowed = Only numbers are allowed for Mobile Number
+script.error.NumberofTokensAllZero=Invalid Number of tokens
+script.error.NumberofTokensAllZero=Invalid Number of tokens
+script.error.NumberofTokens = Please enter Number of Tokens
+script.error.NumberofTokensNumeric = Number of Tokens should contain only numerics
+script.error.ParentMid = Please select Parent Mid
+script.error.PasswordCheck = Please enter Password
+script.error.PhoneNumb = Please enter Phone Number
+script.error.PhoneNumbMinLength = Phone Number cannot have less than 6 digits
+script.error.PhoneNumberPattern = Phone Number should contain only numerics
+script.error.PleaseCheckAll = Please check all the checkboxes
+script.error.PleaseCheckEitherSystemGeneratedOrCustom = Please check Either System Generated Or Custom
+script.error.PleaseCheckIsKYCValidatedByBank = Please check Is KYC Validated by bank ?
+script.error.PleaseEnterBeneficialOwnerAddress = Please enter Beneficial Owner Address
+script.error.PleaseEnterBeneficialOwnerName = Please enter Beneficial Owner Name
+script.error.PleaseEnterBusinessName = Please enter Business Name
+script.error.PleaseEnterCompanyRegistrationNumber = Please enter Company Registration Number
+script.error.PleaseEnterDirector1Description = Please enter Director1 Description
+script.error.PleaseEnterDirector1Name = Please enter Director1 Name
+script.error.PleaseEnterDirector2Description = Please enter Director2 Description
+script.error.PleaseEnterDirector2Name = Please enter Director2 Name
+script.error.PleaseEnterDisplayName = Please enter Display Name
+script.error.PleaseEnterKYCDocumentLocation = Please enter KYC Document Location
+script.error.PleaseEnterLevel1ContactNo = Please enter Level 1 Phone Number
+script.error.PleaseEnterLevel1EmailID = Please enter Level 1 Email ID
+script.error.PleaseEnterLevel2ContactNo = Please enter Level 2 Phone Number
+script.error.PleaseEnterLevelOneName = Please enter Level 1 Name
+script.error.PleaseEnterRemarks = Please enter Remarks
+script.error.PleaseEnterStockExchange = Please enter Stock Exchange
+script.error.PleaseEnterStockSymbol = Please enter Stock Symbol
+script.error.PleaseEnterVATRegistrationNumber = Please enter VAT/Tax Registration Number
+script.error.PleaseSelectBankID = Please select Bank ID
+script.error.PleaseSelectDirector1DocumentType = Please select Director1 Document Type
+script.error.PleaseSelectDirector2DocumentType = Please select Director2 Document Type
+script.error.PleaseSelectRow = Please select row
+script.error.PosIdNumeric = POS ID should be numeric only
+script.error.PosLength = POS ID cannot be more or less than 11 digits
+script.error.PosNumric = POS ID should contain only numerics
+script.error.PosType = Please Select POS Type
+script.error.Posid = Please enter POS ID
+script.error.PrimaryEmail = Please enter Primary Email
+script.error.PrimarySecondaryEmailsValidate = Primary Email and Secondary Email should not be same
+script.error.RemarksAlphabets = Remarks should contain only alphabets with \\",\\" \\".\\" and space
+script.error.RemarksShouldBeLessthan300Characters = Remarks cannot exceed 300 characters
+script.error.RoleDescription = Please enter Role Description
+script.error.RoleDescriptionAlphanumericWithSpecialCharacters = Role Description should contain alphanumeric with space and special characters(!@,.)
+script.error.RoleDescriptionMaxCharLimit = Role Description can contain maximum 200 characters
+script.error.RoleManageUser = Please select Role
+script.error.RoleName = Please enter Role Name
+script.error.RoleNameAlphanumericWithSpecialCharacters = Role Name should contain alphanumeric with space and special characters(!@,.)
+script.error.RoleNameMaxCharLimit = Role Name can contain maximum 20 characters
+script.error.RoutingNum = Please enter Routing Number
+script.error.RoutingNumAllZeros = Invalid Routing Number
+script.error.RoutingNumLength = Routing Number cannot be less than 9 digits
+script.error.RoutingNumeric = Routing Number should contain only numerics
+script.error.SearchManageBanks = Invalid Bank Name
+script.error.SearchManageCorporate = Please enter at least one search term
+script.error.SelectStatus = Please select status
+script.error.SoftwareName = Please enter Software Name
+script.error.SoftwareNameAlphanumerics = Software Name can contain only alphanumerics with single space between words
+script.error.SoftwareVersion = Please enter Software Version
+script.error.SofversionAlphanumeric = Software Version should contain only alphanumerics and \\' . \\'
+script.error.State = Please select State
+script.error.StateManageCorporate = Please select state
+script.error.Status = Please select Status
+script.error.StockExchangeAlphanumerics = Stock Exchange contains only alphanumerics with space
+script.error.StockExchangeMinLength = Stock Exchange should be at least 2 characters
+script.error.StockSymbolAlphaNumerics = Stock Symbol contains only alphanumeric characters
+script.error.StockSymbolMinLength = Stock Symbol should be at least 2 characters
+script.error.StoreCode = Please enter Store ID
+script.error.StoreCodeAlphanumeric = Store ID should contain only alphanumeric characters without space
+script.error.StoreCodeLength = Store ID cannot be more or less than 10 characters
+script.error.StoreName = Please enter Store Name
+script.error.StoreNameAlphanumerics = Store Name can contain only alphanumerics with single space between words
+script.error.StoreNameAlphanumerics = Store Name can contain only alphanumerics with single space between words
+script.error.StoreNameMinmaxlength = Store Name cannot contain less than 2 or more than 25 characters
+script.error.TerminalId = Please enter Terminal ID
+script.error.TerminalIdNumric = Terminal Id should contain only numerics
+script.error.TerminalidLength = Terminal Id cannot be more or less than 8 digits
+script.error.TransactionIdNumeric = Transaction ID should be numeric only
+script.error.UserFirstName = Please enter First Name
+script.error.UserLastName = Please enter Last Name
+script.error.UserName = Please enter User Name
+script.error.UserNameAlphanumeric = User Name should contain only alphanumerics, \\' _ \\' and \\' . \\'
+script.error.UserNameMinMaxLength = User Name cannot be less than 4 and more than 20 characters
+script.error.VATRegistrationNumberAlphaNumerics = VAT Registration Number should contain only alphaNumerics
+script.error.VATRegistrationNumberMaxLength = VAT Registration Number should be less than 30 characters
+script.error.VATRegistrationNumberMinLength = VAT Registration Number should be at least 2 characters and less than 30 characters 
+script.error.Zipcode = Zipcode is mandatory for the selected country
+script.error.ZipcodeAplphanumerics = Zipcode should contain only alphanumerics and \\" - \\" with space
+script.error.ZipcodeLengthJapan = Zipcode length should be either 7 or 8
+script.error.ZipcodeLengthUK = Zipcode length cannot be less than 6 or more than 8
+script.error.ZipcodeLengthUS = Zipcode length should be either 5 or 10
+script.error.ZipcodePatternAustralia = Zipcode should contain exactly 4 numeric values
+script.error.ZipcodePatternCanada = Zipcode pattern ANA NAN (A-Alphabet, N-Numeric) e.g.- K1A 0A4
+script.error.ZipcodePatternFranceGermany = Zipcode should contain exactly 5 numeric values
+script.error.ZipcodePatternIndia = Zipcode should contain exactly 6 numeric values
+script.error.ZipcodePatternJapan = Zipcode pattern should be 7N or 3N-4N (N-Numeric)
+script.error.ZipcodePatternUK = Zipcode pattern e.g.- A9 9AA or A99 9AA or AA9A 9AA (A-Alphabet)
+script.error.ZipcodePatternUS = Zipcode pattern should be 5N or 5N-4N (N-Numeric)
+script.error.cardLast4DigitsNumeric = A/C NUM Last 4 Digits should be a numeric value
+script.error.qrCode = Please enter QR Code
+script.error.qrCodeAlphanumeric = QR Code contains only alphanumeric characters without space
+script.error.qrCodeLength = QR Code cannot be more or less than 11 characters
+script.error.creditcards = please select Credit Cards
+script.error.debitcards = please select Debit Cards
+script.error.selectOneOfcards = please select Credit Cards or Debit Cards or Private Label or Store or Gift Card
+
+script.error.rewardId = Please Enter Reward Id
+
+script.error.RewardPointTotal = Please Enter Total Reward Point 
+
+script.error.rewardPointPending = Please Enter Pending Reward Point 
+
+script.error.rewardPointActive = Please Enter Active Reward Point 
+
+script.error.rewardPointExpired = Please Enter Expired Reward Point 
+
+script.error.rewardPointConverted = Please Enter Converted Reward Point 
+
+script.error.rewardPointCanceled = Please Enter Cancelled Reward Point 
+
+script.error.ActivationDate = Please Enter Activation Date
+
+script.error.ExpireDate = Please Enter Expire Date
+script.label.BankID = 'Bank ID'
+script.label.BankName = 'Bank Name'
+script.label.Banks = 'Banks'
+script.label.BusinessName = 'Business Name'
+script.label.CardLast4Digits = 'A/C NUM Last 4 Digits'
+script.label.CardType = 'A/C TYPE'
+script.label.ChangeReset = 'Reset Password'
+script.label.ContactNo = 'Contact Number'
+script.label.ContactNumber = 'Contact Number'
+script.label.ContactPerson = 'Contact Person'
+script.label.Country = 'Country'
+script.label.CreatedBy = 'Created By'
+script.label.CreatedDate = 'Created Date'
+script.label.Currency = 'Currency'
+script.label.Done = 'Done'
+script.label.EmailId = 'Email ID'
+script.label.EmptyRecords = 'No Record'
+script.label.EntityID = 'Entity ID'
+script.label.Hierarchy = 'Hierarchy'
+script.label.Hour = 'Hour'
+script.label.ID = 'ID'
+script.label.Loading = 'Loading...'
+script.label.MID = 'MID'
+script.label.MerchantList = 'Merchant List'
+script.label.Merchants = 'Merchants'
+script.label.Minute = 'Minute'
+script.label.ModifiedBy = 'Modified By'
+script.label.ModifiedDate = 'Modified Date'
+script.label.Now = 'Now'
+script.label.PaginationView = 'View {0} - {1} of {2}'
+script.label.PassId='POS ID'
+script.label.PosConfiguration = 'POS'
+script.label.PosId = 'POS ID'
+script.label.Role = 'Role'
+script.label.RoleDescription = 'Role Description'
+script.label.RoleName = 'Role Name'
+script.label.Roles = 'Roles'
+script.label.Second = 'Second'
+script.label.StanNumber = 'Stan_Number'
+script.label.Status = 'Status'
+script.label.Users = 'Users'
+script.label.StoreName = 'Store Name'
+script.label.Store = 'Store'
+script.label.TerminalId='Terminal ID'
+script.label.Time = 'Time'
+script.label.TransactionSearch = 'Transactions'
+script.label.TxnAmount = 'Txn Amount'
+script.label.TxnDateTimestamp = 'Txn Date Timestamp'
+script.label.TxnId = 'Txn ID'
+script.label.TxnStatus = 'Txn Status'
+script.label.TxnType = 'Transaction Type'
+script.label.UserName = 'User Name'
+script.label.Users = 'Users'
+script.label.UsersList = 'Users List'
+script.label.Warning = 'Warning'
+script.button.ChangeReset= Reset Password
+script.button.View = View
+script.label.qrCode = 'QR Code'
+script.label.DownloadImage = 'Down load QR Code Image'
+script.label.Email = 'Email'
+script.label.PhoneNumber = 'Phone'
+script.label.Fname = 'First Name'
+script.label.Lname = 'Last Name'
+script.label.RewardId = 'Reward ID'
+script.label.RewardPointTotal = 'Reward Point Total'
+script.label.StoreId = 'Store ID'
+script.label.CouponTitle= 'Coupon Title'
+script.label.CouponIssuerName= 'Coupon Issuer Name'
+script.label.EndDate = 'End Date'
+script.label.MaxRedemption = 'Max Redemption'
+script.label.Coupons = 'Coupons'
+
+script.label.Exceptions = 'Exceptions'
+
+script.label.Discounts = 'Discounts'
+
+#******************TITLE*********TITLE*********TITLE*********TITLE*********TITLE******************
+
+title.AddMerchant = Add Merchant
+title.ApproveRejectKYCChecklist = Approve/Reject KYC Checklist
+title.ApproveRejectMerchant = Approve/Reject Merchant
+title.ChangePassword = Change Password
+title.EditKYCCheckList = Edit KYC CheckList
+title.EditMerchant = Edit Merchant
+
+title.KYCCheckList = KYC CheckList
+title.ManageBanks = Manage Banks
+title.ManageMerchants = Manage Merchants
+title.ManagePos = Manage Pos
+title.ManageRole = Manage Roles
+title.ManageStores = Merchant Store Configuration
+title.ManageUsers = Manage Users
+title.OMNYPAYPortal = OmnyPay Portal
+title.OMNYPAYPortal = OmnyPay Portal
+
+title.ReconcilationStatusReport = Reconciliation Status Report
+title.SessionTimeout = Session Timeout
+title.SystemDashboard = System Dashboard
+title.TokenManagement = Token Management
+title.TransactionSearch = Transaction Search
+title.ViewKYCCheckList = View KYC Check List
+title.ViewMerchant = View Merchant
+title.PageNotFound = Page Not Found
+label.PageNotFound = Page not found
+script.error.PleaseCheckAddress = Please check the address you typed and try again.
+label.GoToLoginPage = to go to the Login page
+label.Forbidden = Forbidden
+label.InvalidSession = Invalid Session
+title.PageNotAllowed = Page Not Allowed
+error.message.PageAccessDenied = You are not permitted to access this page directly.
+label.GoToHomePage = to go to the Home page.
+label.Token= Number of tokens allowed
+error.invalid.Password = Invalid Password
+script.error.StoreNameAlphanumeric = Store Name must contain at least one alphabets
+name.ChangePasswordType = USER
+
+title.ManageException = Coupon Exception Configuration
+title.ManageDiscount = Coupon Discount Configuration
+
+#******************************* Error Messages imported from ErrorCode.properties File ***********************************
+
+OMNYPAY-GETNEWPASSWORD100=Error Occurred while reseting password
+OMNYPAY-USER3001=User does not exist.
+OMNYPAY-USER3002=Password already got changed. 
+OMNYPAY-USER3003=Sorry! Your password link got expired. 
+OMNYPAY-SMS3001=Unable to send SMS. Please try after some time
+
+OMNYPAY-GETNEWPASSWORDWITHHELPDESK100=Error Occurred while get new password from help desk
+
+OMNYPAY-DBERROR000=Database Error.
+OMNYPAY-SYSERROR000=System Error.
+
+# Manage Banks
+OMNYPAY-BANK100=Error occurred while getting the Bank List.
+OMNYPAY-BANK101=Error occurred while saving the Bank Info.
+OMNYPAY-BANK102=Error occured while updating bank details.
+OMNYPAY-BANK103=Bank Name already exists.
+OMNYPAY-BANK104=Bank ID already exists.
+OMNYPAY-BANK105=Bank Email already exists.
+
+# Manage Merchant
+OMNYPAY-MERCHANT101=Error occured while getting the Merchant.
+OMNYPAY-MERCHANT102=Error occured while updating the Merchant.
+OMNYPAY-MERCHANT103=Error occured while saving the Merchant Info.
+OMNYPAY-MERCHANT104=Error occured while creating the Merchant KYC.
+OMNYPAY-MERCHANT105=Error occured while updating the Merchant.
+OMNYPAY-MERCHANT106=Error occured while updating the Merchant KYC.
+OMNYPAY-MERCHANT107=Error occured while getting the MerchantList.
+OMNYPAY-MERCHANT108=Error occured while getting the MerchantList.
+
+
+# Manage Roles
+OMNYPAY-ROLE100=Error occured while getting the Role List.
+OMNYPAY-ROLE101=Error occured while saving the Role Info.
+OMNYPAY-ROLE102=Error occured while editing the Role Info.
+OMNYPAY-URP201 =Role name already exists.
+
+# Manage Users
+OMNYPAY-UI100=Error occured while saving the User Info.
+OMNYPAY-UI200=Error occured while getting the User List.
+OMNYPAY-UI300=Error occured while editing the User Info.
+
+OMNYPAY-DBERROR000=Database Error.
+
+OMNYPAY-UI300=Error occured while editing the User Info.
+OMNYPAY-USER201=User name already exists.
+OMNYPAY-USER202=User email already exists.
+OMNYPAY-USER2001=usr.not.exists
+OMNYPAY-ROLE2002=Role Can not be made as Inactive as it has been assigned to Users
+OMNYPAY-EMAILE2002=Email ID Already Exist.
+OMNYPAY-MER100=Business Name Already Exists.
+OMNYPAY-CUST101 = Customer ID Already Exist
+OMNYPAY-USER203 = MID already exists with ACTIVE status
+data.errorMessage = Database Error
+
+OMNYPAY-STORE100=Error occurred while getting the Store List.
+OMNYPAY-STORE101=Error occurred while saving the Store Info.
+OMNYPAY-STORE102=Error occured while updating Store details.
+OMNYPAY-STORE103=Store Name already exists.
+OMNYPAY-STORE104=Store ID already exists.
+OMNYPAY-STORE105=Store Email already exists.
+
+OMNYPAY-TERMINAL101=Error occured while saving the POS Info.
+OMNYPAY-TERMINAL102=Terminal ID Already Exist.
+OMNYPAY-POSID103=POS ID Already Exist.
+OMNYPAY-QRCODE104=QR Code Already Exist.
+
+OMNYPAY-CARD200 = Error occurred while getting the Merchant Card List.
+
+OMNYPAY-BARCHAR100= Error occurred while getting the Merchant Transaction List.
+
+OMNYPAY-DISCOUNT103 = Discount Description Already Exist
+
+OMNYPAY-EXCEPTION103  = Exception Description Already Exist
+
+script.error.PosIdNumAllZeros = Invalid Pos ID
+script.error.TerminalIdNumAllZeros = Invalid Terminal ID
+script.error.QrCodeNumAllZeros = Invalid QR Code
+label.CurrentYear = Current Year
+label.PreviousYear = Previous Year
+title.MonthlyData = Monthly Data
+script.label.TransactionVolume = 'Transaction Volume'
+script.label.Jan = 'Jan'
+script.label.Feb = 'Feb'
+script.label.Mar = 'Mar'
+script.label.Apr = 'Apr'
+script.label.May = 'May'
+script.label.Jun = 'Jun'
+script.label.Jul = 'Jul'
+script.label.Aug = 'Aug'
+script.label.Sep = 'Sep'
+script.label.Oct = 'Oct'
+script.label.Nov = 'Nov'
+script.label.Dec = 'Dec'
+
+
+
+#////////////////////
+
+label.ManageRewards = Reward Configuration
+
+label.ManageLoyalty = Loyalty Point Configuration
+
+label.RewardPointTotal = Total Reward Point 
+label.RewardPointPending =  Pending Reward Point
+label.RewardPointActive =  Active Reward Point
+label.RewardPointExpired =  Expired Reward Point
+label.RewardPointConverted = Converted Reward Point 
+label.RewardPointCancelled = Cancelled Reward Point 
+
+label.ViewRewards = View Rewards
+
+
+script.error.RewardPointNumerics = RewardPointTotal Name can contain only numerics
+script.error.RewardPointMinmaxlength = RewardPointTotal cannot contain less than 2 or more than 7 characters
+script.error.rewardPointPending = Please Enter Pending Reward Point
+script.error.rewardPointSame = Total Reward Point should be same as the sum of active and pending Reward Points
+
+script.error.rewardPointActive = Please Enter Active Reward Point
+
+script.error.rewardPointExpired = Please Enter Expired Reward Point
+
+script.error.rewardPointConverted = Please Enter Converted Reward Point
+
+script.error.rewardPointCanceled = Please Enter Cancelled Reward Point
+
+
+script.label.RewardPointTotal = 'Total Reward Point'
+
+
+title.ManageReward = Merchant Reward Configuration
+script.error.PendingNotGreater = Pending Reward Point should be less than Total Reward Point
+script.error.ActiveNotGreater = Active Reward Point should be less than Total Reward Point
+script.error.ExpiredNotGreater = Expired Reward Point should be less than Total Reward Point
+script.error.CanceledNotGreater = Cancel Reward Point should be less than Total Reward Point
+script.error.activationDateNotGreater = Activation Date should be less than ExpiryDate
+script.error.activationDateNotSame = Activation Date should not be same as ExpiryDate

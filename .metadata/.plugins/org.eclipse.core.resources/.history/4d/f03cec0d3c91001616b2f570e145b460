@@ -1,0 +1,541 @@
+package org.persistent.service.dao.Impl;
+
+import java.math.BigDecimal;
+import java.util.List;
+
+import org.exception.service.PortalDAException;
+import org.persistent.service.dao.MerchantDAO;
+import org.persistent.service.pojo.PortalSvrMerchantAccount;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.orm.hibernate3.HibernateTemplate;
+
+
+
+/**
+ * The Class MerchantDAOImpl handles all the functionalities MerchantDAOImpl.
+ */
+public class MerchantDAOImpl implements MerchantDAO {
+
+	/** The LOGGER. */
+	//private static final Log4jAdapter LOGGER = Log4jAdapter.getInstance();
+
+	/** The CLAS s_ name. */
+	private final String className = this.getClass().getName();
+
+	/** The jdbc template. */
+	@Autowired
+	private HibernateTemplate hibernateTemplate;
+
+
+	
+	public List<MerchantVO> getList(String name, Long countryId, String status,String coperateCode,String mid,String loginUser) throws PortalDAException {
+		String methodName = "getList";
+		//LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		//sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA)
+		//.append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+	//	LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		List<MerchantVO> merchantList =null;;;
+		try {
+			GetMerchantListSP proc = new GetMerchantListSP(jdbcTemplate);
+			merchantList = proc.execute(name,countryId,status,coperateCode,mid,loginUser);	
+		}catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer.append("DataAccessException occurred while getting the MerchantVO").append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_MERCHANT_LIST,edae.getMessage());
+		}catch (PortalDAException pdae) {
+			
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			
+		}
+		
+		return merchantList;
+	}
+/*
+	public MerchantVO getMerchant(String mid) throws OMNYPAYDAException {
+		String methodName = "getMerchant";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA)
+		.append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		MerchantVO merchantVO;
+		try {
+			GetMerchantSP proc = new GetMerchantSP(jdbcTemplate);
+			merchantVO = proc.execute(mid);	
+		}catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer.append("DataAccessException occurred while getting the MerchantVO").append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_MERCHANT,edae.getMessage());
+		} catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer
+			.append("OMNYPAYDAException occurred while getting the MerchantVO")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occurred while getting the MerchantVO")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(ErrorCodeConstants.GET_MERCHANT).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_MERCHANT,ex.getMessage());
+		}		
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		return merchantVO;
+	}
+	public MerchantKYCVO getMerchantKYC(String mid) throws OMNYPAYDAException {
+		String methodName = "getMerchantKYC";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA)
+		.append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		MerchantKYCVO merchantKYCVO;
+		try {
+			GetMerchantKYCSP proc = new GetMerchantKYCSP(jdbcTemplate);
+			merchantKYCVO = proc.execute(mid);	
+		}catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("DataAccessException occurred while getting the MerchantKYCVO")	.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(ErrorCodeConstants.GET_MERCHANT_KYC).append(OMNYPAYConstants.COMMA).append("Error Message : ").append(edae.getMessage());
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_MERCHANT_KYC,edae.getMessage());
+		} catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer
+			.append("OMNYPAYDAException occurred while getting the MerchantKYCVO")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occurred while getting the MerchantKYCVO")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(ErrorCodeConstants.GET_MERCHANT_KYC).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_MERCHANT_KYC,ex.getMessage());
+		}		
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		return merchantKYCVO;
+	}
+*/
+	public BigDecimal createMerchant(PortalSvrMerchantAccount merchantVO)throws PortalDAException {
+		String methodName = "createMerchant";
+		BigDecimal entityId = null;
+		try {
+			
+			
+			hibernateTemplate.save(merchantVO);
+			}catch (DataAccessException edae) {
+		
+			} /*catch (PortalDAException pdae) {
+			
+			}*/ catch (Exception ex) {
+			
+			}		
+		//LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));		
+		return entityId;
+	}
+	
+/*
+	public void createMerchantKYC(MerchantKYCVO merchantKYCVO)throws OMNYPAYDAException {
+		String methodName = "createMerchantKYC";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA)
+		.append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		try {
+			CreateMerchantKYCSP proc = new CreateMerchantKYCSP(jdbcTemplate);
+			proc.execute(merchantKYCVO);
+		} catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer.append("DataAccessException occurred while Updating the MerchantKYCVO").append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.CREATE_MERCHANT_KYC,edae.getMessage());
+		}catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer
+			.append("OMNYPAYDAException occurred while Updating the MerchantKYCVO")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occurred while Updating the MerchantKYCVO")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(ErrorCodeConstants.CREATE_MERCHANT_KYC).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.CREATE_MERCHANT_KYC,ex.getMessage());
+		}		
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));			
+	}
+
+	public void updateMerchant(MerchantVO merchantVO)throws OMNYPAYDAException {
+		String methodName = "updateMerchant";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA)
+		.append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		try {
+			UpdateMerchantSP proc=new UpdateMerchantSP(jdbcTemplate);
+			proc.execute(merchantVO);
+		}catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer.append("DataAccessException occurred while updating the MerchantVO").append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.UPDATE_MERCHANT,edae.getMessage());
+		} catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer
+			.append("OMNYPAYDAException occurred while updating the MerchantVO")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occurred while updating the MerchantVO")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(ErrorCodeConstants.UPDATE_MERCHANT).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.UPDATE_MERCHANT,ex.getMessage());
+		}		
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));		
+		
+	}
+
+	public void updateMerchantKYC(MerchantKYCVO merchantKYCVO)throws OMNYPAYDAException {
+		String methodName = "updateMerchantKYC";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA)
+		.append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		try {
+			UpdateMerchantKYCSP proc = new UpdateMerchantKYCSP(jdbcTemplate);
+			proc.execute(merchantKYCVO);
+		} catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer.append("DataAccessException occurred while updating the MerchantKYCVO").append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.UPDATE_MERCHANT_KYC,edae.getMessage());
+		}catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer
+			.append("OMNYPAYDAException occurred while updating the MerchantKYCVO")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occurred while updating the MerchantKYCVO")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(ErrorCodeConstants.UPDATE_MERCHANT_KYC).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.UPDATE_MERCHANT_KYC,ex.getMessage());
+		}		
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		
+	}
+	
+	public Long isMidCount(String mid) throws OMNYPAYDAException {
+		String methodName = "isMidCount";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("User Name=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA);
+		Long count = 0L;
+		try {
+			MidCountSP rolesProc = new MidCountSP(jdbcTemplate);
+			count = rolesProc.execute(mid);
+		}catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer.append("DataAccessException occurred while  getting the MIDCOUNT").append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.MID_COUNT,edae.getMessage());
+		} catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer
+			.append("OMNYPAYDAException occurred while getting the MIDCOUNT")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occurred while getting the MIDCOUNT")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(ErrorCodeConstants.MID_COUNT).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.MID_COUNT,ex.getMessage());
+		}		
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		return count;
+	}
+	public void updateMerchantApproveReject(MerchantKYCVO merchantKYCVO)throws OMNYPAYDAException {
+		String methodName = "updateMerchantApproveReject";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA)
+		.append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		try {
+			UpdateMerchantApproveRejectSP proc=new UpdateMerchantApproveRejectSP(jdbcTemplate);		
+			proc.execute(merchantKYCVO);
+		} catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer.append("DataAccessException occurred while updating the MerchantApproveReject").append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.APPROVE_REJECT,edae.getMessage());
+		} catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer
+			.append("OMNYPAYDAException occurred while updating the MerchantApproveReject")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occurred while updating the MerchantApproveReject")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(ErrorCodeConstants.APPROVE_REJECT).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.APPROVE_REJECT,ex.getMessage());
+		}		
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+	}
+	
+	public List<MerchantKYCVO> getKycDocTypes() throws OMNYPAYDAException {
+		String methodName = "getKycDocTypes";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA)
+		.append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		List<MerchantKYCVO> merchantKycVOList=null;
+		try {
+			GetKycDocmntTypesSP proc = new GetKycDocmntTypesSP(jdbcTemplate);
+			merchantKycVOList = proc.execute();	
+		} catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer.append("DataAccessException occurred while getting the KycDocTypes").append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.KYCDOCMNTTYPESSP,edae.getMessage());
+		} catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer
+			.append("OMNYPAYDAException occurred while getting the KycDocTypes")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occurred while getting the KycDocTypes")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(ErrorCodeConstants.KYCDOCMNTTYPESSP).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.KYCDOCMNTTYPESSP,ex.getMessage());
+		}		
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		return merchantKycVOList;
+	}
+	
+	public List<MerchantIDVO> getMerchantIdList(MerchantIDVO merchantIdVO) throws OMNYPAYDAException {
+		String methodName = "getMerchantIdList";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA).append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		
+		List<MerchantIDVO> merchantIdList = null;
+		
+		try {
+			GetMidListSP proc = new GetMidListSP(jdbcTemplate);
+			merchantIdList = proc.execute(merchantIdVO);
+		} catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("DataAccessException occured while getting the MerchantIDVO")
+					.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+					.append(ErrorCodeConstants.GET_MERCHANT).append(OMNYPAYConstants.COMMA)
+					.append("Error Message : ").append(edae.getMessage());
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_MERCHANT, edae.getMessage());
+		} catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("OMNYPAYDAException occured while getting the MerchantIDVO")
+					.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+					.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+					.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occured while getting the MerchantIDVO")
+					.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+					.append(ErrorCodeConstants.GET_MERCHANT).append(OMNYPAYConstants.COMMA)
+					.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_MERCHANT, ex.getMessage());
+		}
+		sb.append("List<merchantIdVO> Size : ").append(merchantIdList.size()).append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		
+		return merchantIdList;
+	}
+	
+	public List<MerchantIDVO> getMerchantsCardList(MerchantIDVO merchantIdVO) throws OMNYPAYDAException {
+		String methodName = "getMerchantsCardList";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA).append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		
+		List<MerchantIDVO> merchantIdList = null;
+		
+		try {
+		    GetMerchantCardListSP proc = new GetMerchantCardListSP(jdbcTemplate);
+			merchantIdList = proc.execute(merchantIdVO);
+		} catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("DataAccessException occured while getting the MerchantIDVO")
+					.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+					.append(ErrorCodeConstants.GET_MERCHANT).append(OMNYPAYConstants.COMMA)
+					.append("Error Message : ").append(edae.getMessage());
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_MERCHANT, edae.getMessage());
+		} catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("OMNYPAYDAException occured while getting the MerchantIDVO")
+					.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+					.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+					.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occured while getting the MerchantIDVO")
+					.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+					.append(ErrorCodeConstants.GET_MERCHANT).append(OMNYPAYConstants.COMMA)
+					.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_MERCHANT, ex.getMessage());
+		}
+		sb.append("List<merchantIdVO> Size : ").append(merchantIdList.size()).append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		
+		return merchantIdList;
+	}
+	
+	public List<MerchantVO> getActiveMerchantDashBoardList(String loginUser,String status) throws OMNYPAYDAException {
+		String methodName = "getActiveMerchantDashBoardList";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA)
+		.append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		List<MerchantVO> merchantList;
+		try {
+			GetActiveMerchantDashBoardListSP proc = new GetActiveMerchantDashBoardListSP(jdbcTemplate);
+			merchantList = proc.execute(loginUser,status);	
+		}catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer.append("DataAccessException occurred while getting the MerchantVO").append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_ACTIVE_MERCHANT_LIST,edae.getMessage());
+		}catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer
+			.append("OMNYPAYDAException occurred while getting the List<MerchantVO>")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occurred while getting the List<MerchantVO>")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(ErrorCodeConstants.GET_ACTIVE_MERCHANT_LIST).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_ACTIVE_MERCHANT_LIST,ex.getMessage());
+		}
+		sb.append("List<MerchantVO> Size : ").append(merchantList.size())
+		.append(OMNYPAYConstants.COMMA);
+
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		return merchantList;
+	}
+
+	public List<MerchantVO> getPendingMerchantDashBoardList(String loginUser,String status) throws OMNYPAYDAException {
+		String methodName = "getPendingMerchantDashBoardList";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(OMNYPAYConstants.COMMA)
+		.append("Arg userName=").append("").append(OMNYPAYConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_ENTRY));
+		List<MerchantVO> merchantList;
+		try {
+			GetPendigMerchantDashBoardListSP proc = new GetPendigMerchantDashBoardListSP(jdbcTemplate);
+			merchantList = proc.execute(loginUser,status);	
+		}catch (DataAccessException edae) {
+			StringBuilder errorBuffer = new StringBuilder("");
+			errorBuffer.append("DataAccessException occurred while getting the MerchantVO").append(OMNYPAYConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, edae, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_PENDING_MERCHANT_LIST,edae.getMessage());
+		}catch (OMNYPAYDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer
+			.append("OMNYPAYDAException occurred while getting the List<MerchantVO>")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(pdae.getErrorCode()).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(pdae.getMessage());
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new OMNYPAYDAException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occurred while getting the List<MerchantVO>")
+			.append(OMNYPAYConstants.COMMA).append(sb).append("Error Code : ")
+			.append(ErrorCodeConstants.GET_PENDING_MERCHANT_LIST).append(OMNYPAYConstants.COMMA)
+			.append("Error Message : ").append(ex.getMessage());
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new OMNYPAYDAException(ErrorCodeConstants.GET_PENDING_MERCHANT_LIST,ex.getMessage());
+		}
+		sb.append("List<MerchantVO> Size : ").append(merchantList.size())
+		.append(OMNYPAYConstants.COMMA);
+
+		LOGGER.debug(className, methodName, sb.toString().concat(OMNYPAYConstants.LOG_EXIT));
+		return merchantList;
+	}
+*/
+}

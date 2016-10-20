@@ -1,0 +1,11 @@
+1475488675425	Rename type 'ForgotPasswordRequestObject'
+1475491755676	Rename type 'SecUserRequestObject'
+1475495265971	Move package
+1475495987438	Rename type 'NewRandomPwdTO'
+1475496468130	Rename type 'OMNYPAYUtil'
+1475497512236	Rename type 'OMNYPAYConstants'
+1475497817653	Delete element
+1475499981147	Rename type 'DcsPermissionRequestObject'
+1475500068379	Rename type 'PermissionFunctionalityRequestObject'
+1475565966612	Move package
+1475585159536	Rename type 'GroupRequestObject'

@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@page import="org.springframework.security.core.context.SecurityContextHolder"%>
+
+<c:set var="contextPath" value="<%=request.getContextPath()%>" />
+
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<title><spring:message code="title.signup"/></title>
+	<jsp:include page="common/stylesheets.jsp"/>	
+	<jsp:include page="common/scripts.jsp"/>
+	<%@ include file="common/commonValidation.jsp" %>
+	<script type="text/javascript">
+		jq(function() {
+			document.getElementById("userName").value="";
+			document.getElementById("email").value="";
+		});
+		function resetFun(){
+			$('#error').html('');
+			$('#errorMsg').html('');
+			$('#errorMessage').html('');
+			document.getElementById("userName").value="";
+			document.getElementById("email").value="";
+		}
+		function validateField(){
+			$('#error').html('');
+			$('#errorMsg').html('');
+			$('#errorMessage').html('');
+			var userName = document.getElementById("userName").value;
+			var email = document.getElementById("email").value;
+			if(userName == ''){
+				$('#errorMessage').html('<p class=error><spring:message code="error.required.Username"/></p>');
+				$('#userName').focus();
+				return false;
+			}else if(email == ''){
+				$('#errorMessage').html('<p class=error><spring:message code="error.required.email"/></p>');
+				$('#email').focus();
+				return false;
+			}else if(!validateEmail(email, $('#errorMessage'))){
+				$('#email').focus();
+				return false;
+			}else{
+				return true;
+			}
+		}
+	</script>
+	<%
+	SecurityContextHolder.getContext().setAuthentication(null);
+	%>
+</head>
+
+<body>
+
+
+<div id="header"> 
+  <!-- Header. Status part -->
+  <div id="header-status">
+    <div class="container_12" style="overflow:hidden;">
+       <div class="grid_7"><img src="${contextPath}/system-file/images/headerlogo1.png"  alt="DCS"/></div>
+      <div class="grid_4"  >
+        <div id="header-text" style=" float:right;">
+          
+          <div id="top-navigation">
+	          	
+			</div>
+        </div>
+      </div>
+    </div>
+    <div style="clear:both;"></div>
+  </div>
+  <div id="header-main">
+    <div class="container_12" >
+      <div class="grid_12" style="margin-top:18px;padding-top:1px;">
+      
+		 
+        <!-- End. #Logo --> 
+      </div>
+    </div>
+    <!-- End. .container_12 --> 
+  </div>
+  <!-- End #subnav --> 
+</div>
+
+
+
+	<div class="container_12"> 
+		<div class="grid_12">
+			<div class="box box-100 altbox" id="box1" style="width: 40%; margin: 5% 0 10% 30%;">
+				<div class="boxinNew">
+					<div class="header" id="collapse" style="overflow: hidden;">
+						<h3 style="padding-top:5px;">
+							<spring:message code="title.signup" />
+						</h3>
+						<span style="float: right; padding-right: 20px; padding-top: 2px;">
+							<img style="visibility: hidden;" src="${contextPath}/system-file/images/add.png" />
+						</span>
+					</div>
+					<div class="content" id="box1-tabular" style="width:100%!important;">
+						<fieldset style="width:100%!important;">
+							<div id="msg" class="displayErrMsg" style="color: #0f518e;"><spring:message code="label.SignUpFormMessage" /></div>
+							<c:if test="${Success == '1' }">
+								<div id="error" class="displayErrMsg"><spring:message code="label.SignUpDone" /></div>
+								<script>
+									document.getElementById('msg').style.display = 'none';
+								</script>
+							</c:if>
+							<form:form action="${contextPath}/doc/signUp/customerSubmit" commandName="signUp">
+								<div>
+									<h1><form:errors path="*" id="errorMsg" class="displayErrMsg" element="div"/></h1>
+								</div>
+								<div id="errorMessage" class="displayErrMsg"></div>
+								<table id="gridNew" width="100%">
+								
+									<tr>
+										<td><spring:message code="label.FirstName"/>:</td>
+										<td><form:input path="firstName" id="firstName" class="txt_width"/></td>
+									</tr>
+								
+									<tr>
+										<td><spring:message code="label.LastName"/>:</td>
+										<td><form:input path="lastName" id="lastName" class="txt_width"/></td>
+									</tr>
+									<tr>
+										<td><spring:message code="label.Username"/>:</td>
+										<td><form:input path="userName" id="userName" class="txt_width"/></td>
+									</tr>
+									<tr>
+										<td><spring:message code="label.confirmPassword"/>:</td>
+										<td><form:input path="password" id="password" class="txt_width"/></td>
+									</tr>
+									<tr>
+										<td><spring:message code="label.confirmPassword"/>:</td>
+										<td><form:input path="confirmPassword" id="confirmPassword" class="txt_width"/></td>
+									</tr>
+									<tr>
+										<td><spring:message code="label.EmailID"/>:</td>
+										<td><form:input path="email" id="email" maxlength="64" class="txt_width"/></td>
+									</tr>
+									<tr>
+										<td><spring:message code="label.MobileNumber"/>:</td>
+										<td><form:input path="phoneNumber" id="phoneNumber" maxlength="64" class="txt_width"/></td>
+									</tr>
+									
+								</table>
+								<div style="margin-left: 2%;">
+									<input type="submit" name="submit" id="submit" class="button altbutton" onclick="return validateField();" value='<spring:message code="button.Submit" />' title='<spring:message code="button.Submit" />'/>
+									<input type="button" name="reset" id="reset" class="button" onclick="resetFun();" value='<spring:message code="button.Reset" />' title='<spring:message code="button.Reset" />' />
+								</div>
+							</form:form>
+							<c:if test="${Success == '1' }">
+								<script type="text/javascript">
+									document.getElementById("userName").value="";
+									document.getElementById("email").value="";
+								</script>	 
+							</c:if>
+								<c:if test="${Success == '2' }">
+								<script type="text/javascript">
+								document.getElementById('msg').style.display = 'none';
+								</script>	 
+							</c:if>
+						</fieldset>
+					</div>
+				</div>
+				<a style="color: #064c88;" href="../access/login" title='<spring:message code="label.Back"/>'><spring:message code="label.Back"/></a>
+			</div>
+		</div>
+	</div>
+	<script>
+		setTimeout(function() {document.getElementById('userName').focus();});
+	</script>
+	<div style="clear: both;"></div>
+	<jsp:include page="common/footer.jsp"/>
+</body>
+</html>

@@ -1,0 +1,424 @@
+package org.business.service.Impl;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import org.business.service.UserService;
+import org.common.service.NewRandomPwd;
+import org.common.service.Permission;
+import org.common.service.SignUp;
+import org.common.service.User;
+import org.exception.service.PortalDAException;
+import org.exception.service.PortalServiceException;
+import org.persistent.service.dao.UserDAO;
+import org.persistent.service.pojo.PortalSvrUserAccount;
+import org.persistent.service.pojo.PortalSvrUserPermission;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+
+
+
+/**
+ * The Class UserServiceImpl.
+ */
+//@Service("userService")
+@Transactional
+public class UserServiceImpl implements UserService {
+
+
+	/** The user dao. */
+	@Autowired
+	private UserDAO userDao;
+
+	/** The LOGGER. *//*
+	/private static final Log4jAdapter LOGGER = Log4jAdapter.getInstance();
+
+	*//** The CLAS s_ name. *//*
+	private final String className = this.getClass().getName();
+
+	*//**
+	 * Gets the user dao.
+	 * 
+	 * @return the user dao
+	 */
+/*	public UserDAO getUserDAO() {
+		return userDAO;
+	}
+*/
+	/**
+	 * Sets the user dao.
+	 * 
+	 * @param userDAO
+	 *            the new user dao
+	 */
+/*	public void setUserDAO(UserDAO userDAO) {
+		this.userDAO = userDAO;
+	}
+*/
+/*	 @Override
+	
+	 * (non-Javadoc)
+	 * 
+	 * @see
+	 * com.DCS.webui.security.service.UserService#getUserInfo(java.lang.String
+	 * )
+	 */
+	public User getUserInfo(String userName) throws PortalServiceException {
+		String methodName = "getUserInfo";
+		//LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		//sb.append("userName=").append(logDetails.getUserName()).append(DCSConstants.COMMA).append("Arg userName=").append(userName).append(DCSConstants.COMMA);
+		//LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_ENTRY));
+		User secVO = new User();
+		try {
+			
+			PortalSvrUserAccount	portalSvrUserAccount = userDao.getUserInfo(userName);
+			
+			if (portalSvrUserAccount !=null ){
+				
+				secVO.setPassword(portalSvrUserAccount.getPassword());
+				secVO.setLoginName(portalSvrUserAccount.getLoginname());
+				secVO.setCreatedBy(portalSvrUserAccount.getCreatedby());
+			}
+			
+			
+		} catch (PortalDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			//errorBuffer.append("DCSDAException occured while getting the SecUserVO").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, pdae, errorBuffer);
+			//throw new DCSServiceException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			//errorBuffer.append("Exception occured while getting the SecUserVO").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, ex, errorBuffer);
+			//throw new DCSServiceException(DCSDAErrorCodes.TXNUSER_INSERT, ex.getMessage());
+		}
+		//sb.append("SecUserVO  : ").append(secVO.toString()).append(DCSConstants.COMMA);
+		//LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_EXIT));
+		return secVO;
+	}
+	
+	
+/*	
+	public SecUserRequestObject getUserInfoStatus(String userName) throws DCSServiceException {
+		String methodName = "getUserInfoStatus";
+		//LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		//sb.append("userName=").append(logDetails.getUserName()).append(DCSConstants.COMMA).append("Arg userName=").append(userName).append(DCSConstants.COMMA);
+	//	LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_ENTRY));
+		SecUserRequestObject secVO = new SecUserRequestObject();
+		try {
+			secVO = userDAO.getUserInfoStatus(userName);
+			
+		} catch (DCSDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+		//	errorBuffer.append("DCSDAException occured while getting the SecUserVO").append(DCSConstants.COMMA).append(sb);
+		//	LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new DCSServiceException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+		//	errorBuffer.append("Exception occured while getting the SecUserVO").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, ex, errorBuffer);
+			//throw new DCSServiceException(ErrorCodeConstants.USER_INFO, ex.getMessage());
+		}
+		//sb.append("SecUserVO  : ").append(secVO.toString()).append(DCSConstants.COMMA);
+		//LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_EXIT));
+		return secVO;
+	}
+
+	
+	 /* (non-Javadoc)
+	 * 
+	 * @see
+	 * com..service.UserService#getUserInfo(java.lang.String
+	 * )
+	 */
+	public User getUserInfoForgot(String userName, String emailId) throws PortalServiceException {
+		String methodName = "getUserInfoForgot";
+		User secVO = new User();
+		
+		try {
+			secVO = userDao.getUserInfoForgot(userName, emailId);
+		} catch (PortalDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			
+			
+		}
+		
+		return secVO;
+	}
+
+	
+	 /* (non-Javadoc)
+	 * 
+	 * @see
+	 * com.DCS.webui.security.service.UserService#getNewRandomPassword(java.lang.String, java.lang.String, java.lang.String)
+	 */
+	public NewRandomPwd getNewRandomPassword(String type, String userName, String email) throws PortalServiceException {
+		String methodName = "getNewRandomPassword";
+		
+		NewRandomPwd nrpwVO = new NewRandomPwd();
+
+		try {
+			nrpwVO = userDao.getNewRandomPassword(type, userName, email);
+		} catch (PortalDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			
+		} catch (Exception ex) {
+			
+		}
+		
+		return nrpwVO;
+	}
+
+	
+	
+	/* (non-Javadoc)
+	 * 
+	 * @see
+	 * com.DCS.webui.security.service.UserService#getPermissionVOList(java
+	 * .lang.String)
+	 */
+	public List<Permission> getPermissionVOList(String userName) throws PortalServiceException {
+		String methodName = "getPermissionVOList";
+		//LogDetails logDetails = LogDetails.getInstance();
+		//StringBuilder sb = new StringBuilder();
+		//sb.append("userName=").append(logDetails.getUserName()).append(DCSConstants.COMMA).append("Arg userName=").append(userName).append(DCSConstants.COMMA);
+		//LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_ENTRY));
+		
+		List<Permission> pmVO = new ArrayList<Permission>();
+		
+		
+		
+		Map<String,String> outList = new HashMap<String,String>();
+		
+		try {
+			List<PortalSvrUserPermission>	pmVOList = userDao.getPermissionVOList(userName);
+			if(pmVOList!= null){
+				//secUserVO.setPermVOList(permVOList);
+				for(PortalSvrUserPermission obj :pmVOList)	{
+					
+					Permission permission = new Permission();
+					permission.setPermissionDesc(obj.getpDescription());
+					permission.setPermissionId(obj.getpId());
+					permission.setPermissionName(obj.getpName());
+					permission.setPermissionType(obj.getpType());
+					pmVO.add(permission);
+				}
+				
+				
+			}
+			
+			
+			
+		} catch (PortalDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			//errorBuffer.append("DCSDAException occured while getting the List<PermissionVO>").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new PortalServiceException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			//errorBuffer.append("Exception occured while getting the List<PermissionVO>").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, ex, errorBuffer);
+			//throw new DCSServiceException(DCSDAErrorCodes.TXNUSER_INSERT, ex.getMessage());
+		}
+		//sb.append("List<PermissionVO> size : ").append(pmVO.size()).append(DCSConstants.COMMA);
+		//LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_EXIT));
+		return pmVO;
+	}
+
+
+
+	public Integer signUpSystem(SignUp signUp) throws PortalServiceException {
+		
+		String methodName = "signUpSystem";
+		
+		Long createdby =100l;
+		
+		Integer success = 0;
+		
+		try {
+			
+			
+			PortalSvrUserAccount portalSvrUserAccount = new PortalSvrUserAccount();
+			
+			portalSvrUserAccount.setFirstname(signUp.getFirstName());
+			portalSvrUserAccount.setLastname(signUp.getLastName());
+			portalSvrUserAccount.setLoginname(signUp.getUserName());
+			portalSvrUserAccount.setEmail(signUp.getEmail());
+			portalSvrUserAccount.setPassword(signUp.getPassword());
+			portalSvrUserAccount.setPhonenumber(signUp.getPhoneNumber());
+			portalSvrUserAccount.setCreatedby(createdby);
+			
+			List<PortalSvrUserPermission>	pmVOList = userDao.getPermissionVOList(userName);
+			if(pmVOList!= null){
+				//secUserVO.setPermVOList(permVOList);
+				for(PortalSvrUserPermission obj :pmVOList)	{
+					
+					Permission permission = new Permission();
+					permission.setPermissionDesc(obj.getpDescription());
+					permission.setPermissionId(obj.getpId());
+					permission.setPermissionName(obj.getpName());
+					permission.setPermissionType(obj.getpType());
+					pmVO.add(permission);
+				}
+				
+				
+			}
+			
+			
+			
+		} catch (PortalDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			//errorBuffer.append("DCSDAException occured while getting the List<PermissionVO>").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new PortalServiceException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			//errorBuffer.append("Exception occured while getting the List<PermissionVO>").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, ex, errorBuffer);
+			//throw new DCSServiceException(DCSDAErrorCodes.TXNUSER_INSERT, ex.getMessage());
+		}
+		return success;
+	}
+
+    /*public List<DcsPermissionRequestObject> getPermissionBaseOnHeriarchy(Long herType) throws DCSServiceException {
+		String methodName = "getPermissionBaseOnHeriarchy";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(DCSConstants.COMMA).append("Arg userName=").append(herType).append(DCSConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_ENTRY));
+		
+		List<DcsPermissionRequestObject> pmVO = new ArrayList<DcsPermissionRequestObject>();
+		try {
+			pmVO = userDAO.getPermissionBaseOnHeriarchy(herType);
+		} catch (DCSDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("DCSDAException occured while getting the List<PermissionVO>").append(DCSConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new DCSServiceException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occured while getting the List<PermissionVO>").append(DCSConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new DCSServiceException(ErrorCodeConstants.PERMISSION_LIST, ex.getMessage());
+		}
+		sb.append("List<PermissionVO> size : ").append(pmVO.size()).append(DCSConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_EXIT));
+		return pmVO;
+	}
+*/
+	/*public List<UserRequestObject> getUserInfoList(UserRequestObject userVO) throws DCSServiceException {
+		String methodName = "getUserInfoList";
+		//LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		///sb.append("userName=").append(logDetails.getUserName()).append(DCSConstants.COMMA).append("Arg userVO=").append(userVO).append(DCSConstants.COMMA);
+		//LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_ENTRY));
+		List<UserRequestObject> userVOList = new ArrayList<UserRequestObject>();
+		try {
+			userVOList = userDAO.getUserInfoList(userVO);
+		} catch (DCSDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			//errorBuffer.append("DCSDAException occured while getting the List<UserVO>").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new DCSServiceException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			//errorBuffer.append("Exception occured while getting the List<UserVO>").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, ex, errorBuffer);
+			//throw new DCSServiceException(ErrorCodeConstants.GET_USER_INFO, ex.getMessage());
+		}
+		//sb.append("List<UserVO> size : ").append(userVOList.size()).append(DCSConstants.COMMA);
+		//LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_EXIT));
+		return userVOList;
+	}*/
+
+	/*public UserRequestObject createUser(UserRequestObject userVO) throws DCSServiceException {
+		String methodName = "createUser";
+		//LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		//sb.append("userName=").append(logDetails.getUserName()).append(DCSConstants.COMMA).append("Arg userVO=").append(userVO).append(DCSConstants.COMMA);
+	//	LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_ENTRY));
+		
+		UserRequestObject userVO2 = null;
+		try {
+			userVO2 = userDAO.createUser(userVO);
+		} catch (DCSDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			//errorBuffer.append("DCSDAException occured while inserting UserVO").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, pdae, errorBuffer);
+			//throw new DCSServiceException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			//errorBuffer.append("Exception occured while inserting the UserVO").append(DCSConstants.COMMA).append(sb);
+			///LOGGER.error(className, methodName, ex, errorBuffer);
+			//throw new DCSServiceException(ErrorCodeConstants.CREATE_USER_INFO, ex.getMessage());
+		}
+		//sb.append("UserVO size : ").append(userVO).append(DCSConstants.COMMA);
+		//LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_EXIT));
+		return userVO2;
+	}
+
+	public UserVO updateUser(UserVO userVO) throws DCSServiceException {
+		String methodName = "updateUser";
+		LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		sb.append("userName=").append(logDetails.getUserName()).append(DCSConstants.COMMA).append("Arg userVO=").append(userVO).append(DCSConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_ENTRY));
+		
+		UserVO userVO2 = null;
+		try {
+			userVO2 = userDAO.updateUser(userVO);
+		} catch (DCSDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("DCSDAException occured while updating UserVO").append(DCSConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, pdae, errorBuffer);
+			throw new DCSServiceException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			errorBuffer.append("Exception occured while updating the UserVO").append(DCSConstants.COMMA).append(sb);
+			LOGGER.error(className, methodName, ex, errorBuffer);
+			throw new DCSServiceException(ErrorCodeConstants.UPDATE_USER_INFO, ex.getMessage());
+		}
+		sb.append("UserVO size : ").append(userVO).append(DCSConstants.COMMA);
+		LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_EXIT));
+		return userVO2;
+	}
+
+	
+	public Map<String, Object> getHeirrcyRolesEntities(Long heirarchyId,String function) throws DCSServiceException {
+		String methodName = "getHeirrcyRolesEntities";
+		//LogDetails logDetails = LogDetails.getInstance();
+		StringBuilder sb = new StringBuilder();
+		//sb.append("userName=").append(logDetails.getUserName()).append(DCSConstants.COMMA).append("Arg heirarchyId=").append(heirarchyId).append(DCSConstants.COMMA);
+		//LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_ENTRY));
+		
+		Map<String, Object> heirrcyRolesEntitieMap = null;
+		try {
+			heirrcyRolesEntitieMap = userDAO.getHeirrcyRolesEntities(heirarchyId,function);
+	
+		} catch (DCSDAException pdae) {
+			StringBuilder errorBuffer = new StringBuilder();
+			//errorBuffer.append("DCSDAException occured while getting  HeirrcyRolesEntities").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, pdae, errorBuffer);
+			//throw new DCSServiceException(pdae.getErrorCode(), pdae.getMessage());
+		} catch (Exception ex) {
+			StringBuilder errorBuffer = new StringBuilder();
+			///errorBuffer.append("Exception occured while getting the HeirrcyRolesEntities").append(DCSConstants.COMMA).append(sb);
+			//LOGGER.error(className, methodName, ex, errorBuffer);
+			//throw new DCSServiceException(ErrorCodeConstants.GET_HR_ENTITY, ex.getMessage());
+		}
+		//sb.append("heirarchyId: ").append(heirarchyId).append(DCSConstants.COMMA);
+		//LOGGER.debug(className, methodName, sb.toString().concat(DCSConstants.LOG_EXIT));
+		return heirrcyRolesEntitieMap;
+	}
+*/
+
+
+	
+}

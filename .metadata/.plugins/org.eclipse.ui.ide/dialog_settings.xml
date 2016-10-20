@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="CleanDialogSettings">
+		<item value="500" key="DIALOG_WIDTH"/>
+		<item value="false" key="TOGGLE_SELECTED"/>
+		<item value="375" key="DIALOG_HEIGHT"/>
+		<item value="262" key="DIALOG_X_ORIGIN"/>
+		<item value="119" key="DIALOG_Y_ORIGIN"/>
+	</section>
+	<section name="org.eclipse.ui.dialogs.FilteredResourcesSelectionDialog">
+		<item value="true" key="ShowStatusLine"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;History&gt;&#x0D;&#x0A;&lt;historyRootNode&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/webapp/WEB-INF/jsp/common/footer.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/common-service/src/main/java/org/common/service/util/PropertiesUtil.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/persistent-service/src/main/java/org/persistent/service/dao/UserDAO.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/business-service/src/main/java/org/business/service/Impl/UserServiceImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/pom.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/webapp/WEB-INF/web.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/webapp/WEB-INF/jsp/forgotPassword.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/common-service/src/main/java/org/common/service/LoginLogout.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/webapp/WEB-INF/jsp/SystemAdminDashBoard.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/business-service/src/main/java/org/business/service/Impl/MerchantServiceImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/persistent-service/src/main/java/org/persistent/service/dao/Impl/MerchantDAOImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/resources/ApplicationContext.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/business-service/src/main/resources/ApplicationContext.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/persistent-service/src/main/resources/ApplicationContext.xml&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/persistent-service/src/main/java/org/persistent/service/dao/Impl/CommonDAOImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/java/org/portal/app/controller/ManageMerchantController.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-parent/portal-app/src/main/java/org/portal/app/controller/ManageMerchantController.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/webapp/WEB-INF/jsp/system/manageMerchant.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/java/org/portal/app/controller/LoginLogoutController.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/webapp/WEB-INF/jsp/common/header.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-parent/persistent-service/src/main/java/org/persistent/service/dao/Impl/MerchantDAOImpl.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/java/org/portal/app/controller/ForgotPasswordController.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/java/org/portal/app/controller/SignUpController.java&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/resources/ApplicationResources_en.properties&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/webapp/WEB-INF/jsp/signup.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;infoNode path=&quot;/portal-app/src/main/webapp/WEB-INF/jsp/login.jsp&quot; type=&quot;1&quot;/&gt;&#x0D;&#x0A;&lt;/historyRootNode&gt;&#x0D;&#x0A;&lt;/History&gt;" key="History"/>
+		<item value="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#x0D;&#x0A;&lt;workingSet workingSetName=&quot;&quot;/&gt;" key="WorkingSet"/>
+		<item value="false" key="ShowDerived"/>
+		<section name="DialogBoundsSettings">
+			<item value="600" key="DIALOG_WIDTH"/>
+			<item value="1|Segoe UI|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI" key="DIALOG_FONT_NAME"/>
+			<item value="500" key="DIALOG_HEIGHT"/>
+			<item value="220" key="DIALOG_X_ORIGIN"/>
+			<item value="44" key="DIALOG_Y_ORIGIN"/>
+		</section>
+	</section>
+</section>

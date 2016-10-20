@@ -1,0 +1,114 @@
+/**
+ * 
+ */
+package org.persistent.service.pojo;
+
+import java.io.Serializable;
+import java.sql.Timestamp;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+/**
+ * @author iliyasm
+ *
+ */
+@Entity
+@Table(name="PORTAL_SVR_MERCHANTACCOUNT")
+public class PortalSvrMerchantAccount implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+	
+	
+	@Id
+	@SequenceGenerator(name = "MyAccount", sequenceName = "USERACCOUNT_SEQ", allocationSize=1)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE, generator="MyAccount")
+	@Column(name="id")
+	private long id;
+	
+	@Column(name="display_name")
+	private String displayName;
+	
+	
+	@Column(name="business_name")
+	private String businessName;
+	
+	
+	@Column(name="created_by")
+	private long createdby;
+	
+	
+	@Column(name="mid")
+	private String merchantId;
+	
+	
+	@Column(name="system_generated")
+	private String systemGenerated;
+	
+	@Column(name="title")
+	private String title;
+	
+	@Column(name="usr_firstname")
+	private String firstname;
+	
+	@Column(name="usr_lastname")
+	private String lastname;
+	
+	@Column(name="contact_number")
+	private String contactNumber;
+	
+	@Column(name="email")
+	private String email;
+	
+	
+	@Column(name="address")
+	private String address;
+	
+	
+	@Column(name="country")
+	private String country;
+	
+	
+	@Column(name="state")
+	private String state;
+	
+	
+	@Column(name="city")
+	private String city;
+	
+	@Column(name="zipcode")
+	private String zipcode;
+	
+			
+	@Column(name="created_date")
+	private Timestamp createddate;
+	
+	
+	
+/*	@Column(name="modified_date")
+	private Timestamp modifiedDate;
+	
+	@Column(name="modified_by")
+	private long modified_by;*/
+	
+	
+	
+	
+	
+	//constructor
+	public PortalSvrMerchantAccount() {
+		
+		
+	}
+
+
+	
+	
+	
+	
+}
